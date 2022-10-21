@@ -1,0 +1,65 @@
+
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dpv: <https://w3id.org/dpv/dpv-skos#> .
+@prefix dpv-gdpr: <https://w3id.org/dpv/dpv-skos/dpv-gdpr#> .
+@prefix dpv-pd: <https://w3id.org/dpv/dpv-skos/dpv-pd#> .
+@prefix dpv-tech: <https://w3id.org/dpv/dpv-skos/dpv-tech#> .
+@prefix dpcat: <https://w3id.org/dpcat#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix time: <https://www.w3.org/TR/owl-time/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+
+@prefix upsilon: <https://w3id.org/dpcat/examples/UPSILON/vocab#> .
+@prefix : <https://w3id.org/dpcat/examples/UPSILON#> .
+
+: a dpcat:ROPA ;
+    dct:title " Security Processing Activities "@en ;
+    dct:description " Security Personal Data Processing Activities "@en ;
+    dct:created "2022-09-07"^^xsd:date ;
+    dct:identifier "Sec1"^^xsd:string ;
+    dct:publisher upsilon:Security   ;
+    dcat:contactPoint upsilon:Security  ;
+    dcat:dataset  :Rec002  .
+
+
+:Rec002 a dpcat:ROPARecord ;
+    dct:title "Security Management "@en ;
+    dct:description "Security Management  "@en ;
+    dct:created "2021-11-03"^^xsd:date ;
+    dct:publisher upsilon:Security  ;
+    dcat:contactPoint upsilon:Security  ;
+
+    dpv:hasDataController upsilon:UpsilonPlc ;
+    dpv:hasResponsibleEntity upsilon:Security   ;
+    
+    dpv:hasPersonalData  upsilon:CCTV_Image  ;
+   
+ 
+    dpv:hasPurpose upsilon:Security   ;
+    dpv:hasLegalBasis upsilon:LegitimateInterest  ; 
+    dpv:hasDataSubject upsilon:CurrentEmployees  ;
+    dpv:hasRight upsilon:DataSubjectRights ;
+    
+    dpv:hasRecipient upsilon:SecurityNow ;
+
+    dpv:hasTechnicalOrganisationalMeasure upsilon:EncryptionInRest, upsilon:BusinessContinuityPlan, upsilon:EncryptionInTransfer, upsilon:MultiFactorAuthentication ;
+
+    dpv:hasPersonalData upsilon:CCTV_Image ;
+    dpv:hasStorage [
+        a dpv:StorageCondition ;
+        skos:editorialNote """The time-limits for storing the data of CCTV images are as follows: - one month."""@en ;
+        dpv:hasDuration [
+            a dpv:StorageDuration, time:Duration ;
+            dpv:hasPersonalData upsilon:DataOfStaffCandidates ;
+            dpv:isAfter "Submission for spontaneous applications health data"@en ;
+            time:numericDuration "1"^^xsd:decimal ;
+            time:unitType :unitMonth ;
+            ] ;
+        ] .
+
+
+
