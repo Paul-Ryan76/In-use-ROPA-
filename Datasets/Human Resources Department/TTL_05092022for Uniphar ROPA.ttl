@@ -1,0 +1,791 @@
+
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dpv: <https://w3id.org/dpv/dpv-skos#> .
+@prefix dpv-gdpr: <https://w3id.org/dpv/dpv-skos/dpv-gdpr#> .
+@prefix dpv-pd: <https://w3id.org/dpv/dpv-skos/dpv-pd#> .
+@prefix dpv-tech: <https://w3id.org/dpv/dpv-skos/dpv-tech#> .
+@prefix dpcat: <https://w3id.org/dpcat#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix time: <https://www.w3.org/TR/owl-time/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+
+@prefix uniphar: <https://w3id.org/dpcat/examples/UNIPHAR/vocab#> .
+@prefix : <https://w3id.org/dpcat/examples/UNIPHAR/01a#> .
+
+: a dpcat:ROPA ;
+    dct:title " Human Resource Activities "@en ;
+    dct:description " Human Resources Personal Data Processing Activities "@en ;
+    dct:created "2022-18-08"^^xsd:date ;
+    dct:identifier "01a"^^xsd:string ;
+    dct:publisher uniphar:HumanResources ;
+    dcat:contactPoint uniphar:HumanResources ;
+    dcat:dataset :01a-1, :01a-2, :01a-3, :01a-4 .
+
+:01a-1 a dpcat:ROPARecord ;
+    dct:title "HR File Mantainance"@en ;
+    dct:description "HR File Mantainance"@en ;
+    dct:created "2021-18-08"^^xsd:date ;
+    dct:publisher uniphar:HumanResources ;
+    dcat:contactPoint uniphar:HumanResources ;
+
+    dpv:hasDataController uniphar:UnipharPlc ;
+    dpv:hasResponsibleEntity uniphar:UnipharPlc ;
+
+    dpv:hasPurpose uniphar:MaintainStaffRecords ;
+    dpv:hasLegalBasis uniphar:StaffRegulation;
+    dpv:hasDataSubject uniphar:CurrentEmployees ;
+    dpv:hasDataSubject uniphar:ExEmployees ;
+    dpv:hasRight uniphar:DataSubjectRights ;
+
+    dpv:hasRecipient uniphar:Workday ;
+
+    dpv:hasTechnicalOrganisationalMeasure uniphar:RestrictedMailboxForSelectionCommittee, uniphar:LockedPaperCabinet, uniphar:DataProtectionNoticeStaffSelection ;
+
+    dpv:hasPersonalData uniphar:DataOfStaffCandidates ;
+    dpv:hasStorage [
+        a dpv:StorageCondition ;
+        skos:editorialNote """The time-limits for storing the data of staff candidates are as follows: - 2 years after the closure of the selection process for applicants not recruited, or, in case of appeals or judicial proceedings, 5 years after the final administrative or judicial decision was rendered, - 10 years from the end of the period worked by a recruited applicant. - 6 months after submission for spontaneous applications health data, if communicated by the candidate (as mentioned above) are stored until the end of the selection process, then they are deleted."""@en ;
+        dpv:hasDuration [
+            a dpv:StorageDuration, time:Duration ;
+            dpv:hasPersonalData uniphar:DataOfStaffCandidates ;
+            dpv:isAfter "Closure of selection process for applicants not recruited"@en ;
+            time:numericDuration "2"^^xsd:decimal ;
+            time:unitType :unitYear ;
+            ] ;
+        dpv:hasDuration [
+            a dpv:StorageDuration, time:Duration ;
+            dpv:hasPersonalData uniphar:DataOfStaffCandidates ;
+            dpv:isAfter "In case of appeals or judicial proceedings, after the final administrative or judicial decision was rendered"@en ;
+            time:numericDuration "5"^^xsd:decimal ;
+            time:unitType :unitYear ;
+            ] ;
+        dpv:hasDuration [
+            a dpv:StorageDuration, time:Duration ;
+            dpv:hasPersonalData uniphar:DataOfStaffCandidates ;
+            dpv:isAfter "Submission for spontaneous applications health data"@en ;
+            time:numericDuration "6"^^xsd:decimal ;
+            time:unitType :unitMonth ;
+            ] ;
+        dpv:hasDuration [
+            a dpv:StorageDuration, time:Duration ;
+            dpv:hasPersonalData uniphar:JobApplicantSpecialHealthNeeds, uniphar:JobApplicantDisability ;
+            dpv:isAfter "Closure of selection process for applicants not recruited"@en ;
+            time:numericDuration "2"^^xsd:decimal ;
+            time:unitType :unitYear ;
+            ] ;
+        ] .
+
+:01a-2 a dpcat:ROPARecord ;
+    dct:title "Visitor Log"@en ;
+    dct:description "Mantain log of visitors"@en ;
+    dct:created "2021-11-03"^^xsd:date ;
+    dct:publisher uniphar:Security ;
+    dcat:contactPoint uniphar:Security ;
+
+    dpv:hasDataController uniphar:UnipharPlc;
+    dpv:hasResponsibleEntity uniphar:UnipharPlc;
+
+    dpv:hasPurpose uniphar:Security ;
+    dpv:hasLegalBasis uniphar:LegitimateInteret ;
+    dpv:hasDataSubject uniphar:JobApplicants, uniphar:Visitors;
+
+    dpv:hasRight uniphar:DataSubjectRights ;
+
+    dpv:hasRecipient uniphar:SelectionCommittee2 ;
+
+    dpv:hasTechnicalOrganisationalMeasure uniphar:RestrictedMailboxForSelectionCommittee, uniphar:LockedPaperCabinet, uniphar:DataProtectionNoticeStaffSelection ;
+
+    dpv:hasPersonalData uniphar:visitors;
+    dpv:hasStorage [
+        a dpv:StorageCondition ;
+        skos:editorialNote """The time-limits for storing the data of staff candidates are as follows: - 2 years after the closure of the selection process for applicants not recruited, or, in case of appeals or judicial proceedings, 5 years after the final administrative or judicial decision was rendered, - 10 years from the end of the period worked by a recruited applicant. - 6 months after submission for spontaneous applications health data, if communicated by the candidate (as mentioned above) are stored until the end of the selection process, then they are deleted."""@en ;
+        dpv:hasDuration [
+            a dpv:StorageDuration, time:Duration ;
+            dpv:hasPersonalData uniphar:DataOfStaffCandidates ;
+            dpv:isAfter "Closure of selection process for applicants not recruited"@en ;
+            time:numericDuration "2"^^xsd:decimal ;
+            time:unitType :unitYear ;
+            ] ;
+        dpv:hasDuration [
+            a dpv:StorageDuration, time:Duration ;
+            dpv:hasPersonalData uniphar:DataOfStaffCandidates ;
+            dpv:isAfter "In case of appeals or judicial proceedings, after the final administrative or judicial decision was rendered"@en ;
+            time:numericDuration "5"^^xsd:decimal ;
+            time:unitType :unitYear ;
+            ] ;
+        dpv:hasDuration [
+            a dpv:StorageDuration, time:Duration ;
+            dpv:hasPersonalData uniphar:DataOfStaffCandidates ;
+            dpv:isAfter "Submission for spontaneous applications health data"@en ;
+            time:numericDuration "6"^^xsd:decimal ;
+            time:unitType :unitMonth ;
+            ] ;
+        dpv:hasDuration [
+            a dpv:StorageDuration, time:Duration ;
+            dpv:hasPersonalData uniphar:JobApplicantSpecialHealthNeeds, uniphar:JobApplicantDisability ;
+            dpv:isAfter "Closure of selection process for applicants not recruited"@en ;
+            time:numericDuration "2"^^xsd:decimal ;
+            time:unitType :unitYear ;
+            ] ;
+        ] .
+
+:01a-3 a dpcat:ROPARecord ;
+    dct:title "Selection of Director"@en ;
+    dct:description "Selection of Director"@en ;
+    dct:created "2021-11-03"^^xsd:date ;
+    dct:publisher uniphar:HRBA ;
+    dcat:contactPoint uniphar:HRBA ;
+
+    dpv:hasDataController uniphar:UNIPHAR ;
+    dpv:hasResponsibleEntity uniphar:HRBA ;
+
+    dpv:hasPurpose uniphar:StaffSelection ;
+    dpv:hasLegalBasis uniphar:StaffRegulation ;
+    dpv:hasDataSubject uniphar:JobApplicants ;
+    dpv:hasRight uniphar:DataSubjectRights ;
+
+    dpv:hasRecipient uniphar:SelectionCommittee3 ;
+
+    dpv:hasTechnicalOrganisationalMeasure uniphar:RestrictedMailboxForSelectionCommittee, uniphar:LockedPaperCabinet, uniphar:DataProtectionNoticeStaffSelection ;
+
+    dpv:hasPersonalData uniphar:DataOfStaffCandidates ;
+    dpv:hasStorage [
+        a dpv:StorageCondition ;
+        skos:editorialNote """The time-limits for storing the data of staff candidates are as follows: - 2 years after the closure of the selection process for applicants not recruited, or, in case of appeals or judicial proceedings, 5 years after the final administrative or judicial decision was rendered, - 10 years from the end of the period worked by a recruited applicant. - 6 months after submission for spontaneous applications health data, if communicated by the candidate (as mentioned above) are stored until the end of the selection process, then they are deleted."""@en ;
+        dpv:hasDuration [
+            a dpv:StorageDuration, time:Duration ;
+            dpv:hasPersonalData uniphar:DataOfStaffCandidates ;
+            dpv:isAfter "Closure of selection process for applicants not recruited"@en ;
+            time:numericDuration "2"^^xsd:decimal ;
+            time:unitType :unitYear ;
+            ] ;
+        dpv:hasDuration [
+            a dpv:StorageDuration, time:Duration ;
+            dpv:hasPersonalData uniphar:DataOfStaffCandidates ;
+            dpv:isAfter "In case of appeals or judicial proceedings, after the final administrative or judicial decision was rendered"@en ;
+            time:numericDuration "5"^^xsd:decimal ;
+            time:unitType :unitYear ;
+            ] ;
+        dpv:hasDuration [
+            a dpv:StorageDuration, time:Duration ;
+            dpv:hasPersonalData uniphar:DataOfStaffCandidates ;
+            dpv:isAfter "Submission for spontaneous applications health data"@en ;
+            time:numericDuration "6"^^xsd:decimal ;
+            time:unitType :unitMonth ;
+            ] ;
+        dpv:hasDuration [
+            a dpv:StorageDuration, time:Duration ;
+            dpv:hasPersonalData uniphar:JobApplicantSpecialHealthNeeds, uniphar:JobApplicantDisability ;
+            dpv:isAfter "Closure of selection process for applicants not recruited"@en ;
+            time:numericDuration "2"^^xsd:decimal ;
+            time:unitType :unitYear ;
+            ] ;
+        ] .
+
+:01a-4 a dpcat:ROPARecord ;
+    dct:title "Payables Processing"@en ;
+    dct:description "Payables processing "@en ;
+    dct:created "2021-11-03"^^xsd:date ;
+    dct:publisher uniphar:Finance ;
+    dcat:contactPoint uniphar:Finance ;
+
+    dpv:hasDataController uniphar:UNIPHAR ;
+    dpv:hasResponsibleEntity uniphar:Finance ;
+    
+    dpv:hasPersonalData  uniphar:FinancialData ;
+    dpv:hasPersonalData  uniphar:Test5 ;
+   
+ 
+    dpv:hasPurpose uniphar:VendorManagement ;
+    dpv:hasLegalBasis uniphar:ContractPerformance ;
+    dpv:hasDataSubject uniphar:Customers ;
+    dpv:hasRight uniphar:DataSubjectRights ;
+
+    dpv:hasRecipient uniphar:SAP ;
+
+    dpv:hasTechnicalOrganisationalMeasure uniphar:RestrictedMailboxForSelectionCommittee, uniphar:LockedPaperCabinet, uniphar:DataProtectionNoticeStaffSelection, uniphar:Measure1, uniphar:Measure2 ;
+
+    dpv:hasPersonalData uniphar:DataOfStaffCandidates ;
+    dpv:hasStorage [
+        a dpv:StorageCondition ;
+        skos:editorialNote """The time-limits for storing the data of staff candidates are as follows: - 2 years after the closure of the selection process for applicants not recruited, or, in case of appeals or judicial proceedings, 5 years after the final administrative or judicial decision was rendered, - 10 years from the end of the period worked by a recruited applicant. - 6 months after submission for spontaneous applications health data, if communicated by the candidate (as mentioned above) are stored until the end of the selection process, then they are deleted."""@en ;
+        dpv:hasDuration [
+            a dpv:StorageDuration, time:Duration ;
+            dpv:hasPersonalData uniphar:DataOfStaffCandidates ;
+            dpv:isAfter "Closure of selection process for applicants not recruited"@en ;
+            time:numericDuration "2"^^xsd:decimal ;
+            time:unitType :unitYear ;
+            ] ;
+        dpv:hasDuration [
+            a dpv:StorageDuration, time:Duration ;
+            dpv:hasPersonalData uniphar:DataOfStaffCandidates ;
+            dpv:isAfter "In case of appeals or judicial proceedings, after the final administrative or judicial decision was rendered"@en ;
+            time:numericDuration "5"^^xsd:decimal ;
+            time:unitType :unitYear ;
+            ] ;
+        dpv:hasDuration [
+            a dpv:StorageDuration, time:Duration ;
+            dpv:hasPersonalData uniphar:DataOfStaffCandidates ;
+            dpv:isAfter "Submission for spontaneous applications health data"@en ;
+            time:numericDuration "6"^^xsd:decimal ;
+            time:unitType :unitMonth ;
+            ] ;
+        dpv:hasDuration [
+            a dpv:StorageDuration, time:Duration ;
+            dpv:hasPersonalData uniphar:JobApplicantSpecialHealthNeeds, uniphar:JobApplicantDisability ;
+            dpv:isAfter "Closure of selection process for applicants not recruited"@en ;
+            time:numericDuration "2"^^xsd:decimal ;
+            time:unitType :unitYear ;
+            ] ;
+        ] .
+
+
+### UNIPHAR vocab ###
+
+uniphar:UnipharPlc a foaf:Agent, dpv:LegalEntity ;
+    dpv:hasName "Uniphar Plc"@en ;
+    dpv:hasContact "Postal address: 4045 Kingswood Road, 4045 Kingswood Road, Dublin, D24 V06K." ;
+    dpv:hasContact "Office address: 4045 Kingswood Road, 4045 Kingswood Road, Dublin, D24 V06K." ;
+    dpv:hasContact "Telephone: +353 1 4041628" ;
+    dpv:hasContact "Email: info@uniphar.ie" ;
+    dpv:hasContact "Website: https://uniphar.ie" .
+
+uniphar:Security a foaf:Agent, dpv:OrganisationalUnit ;
+    dpv:hasName "Security Services_Security Unit"@en ;
+    dpv:hasContact "Email: uniphar-selections@uniphar.europa.eu" ;
+    dpv:hasContact "https://uniphar.europa.eu/form/unipharweb-contact-form_en" ;
+    skos:broaderTransitive uniphar:UnipharPlc .
+
+uniphar:HumanResources a foaf:Agent, dpv:OrganisationalUnit ;
+    dpv:hasName "Human Resources Department"@en ;
+    skos:broaderTransitive uniphar:UnipharPlc .
+
+uniphar:Finance a foaf:Agent, dpv:OrganisationalUnit ;
+    dpv:hasName "Finance Department"@en ;
+    skos:broaderTransitive uniphar:UnipharPlc .
+
+uniphar:Facilities a foaf:Agent, dpv:OrganisationalUnit ;
+    dpv:hasName "Facilities Management"@en ;
+    skos:broaderTransitive uniphar:UnipharPlc .
+
+uniphar:Quality a foaf:Agent, dpv:OrganisationalUnit ;
+    dpv:hasName "Quality Department "@en ;
+    skos:broaderTransitive uniphar:UnipharPlc .
+
+uniphar:Corporate a foaf:Agent, dpv:OrganisationalUnit ;
+    dpv:hasName "Corporate Services"@en ;
+    skos:broaderTransitive uniphar:UnipharPlc .
+
+uniphar:SelectionCommittee1 a foaf:Agent, dpv:OrganisationalUnit ;
+    dpv:hasName "For the selection of a Director, the Supervisor can be consulted"@en ;
+    skos:broaderTransitive uniphar:UnipharPlc .
+
+uniphar:SelectionCommittee2 a foaf:Agent, dpv:OrganisationalUnit ;
+    dpv:hasName "For the selection of a Director, the Supervisor can be consulted"@en ;
+    skos:broaderTransitive uniphar:UnipharPlc .
+
+uniphar:SelectionCommittee3 a foaf:Agent, dpv:OrganisationalUnit ;
+    dpv:hasName "For the selection of a Director, the Supervisor can be consulted"@en ;
+    skos:broaderTransitive uniphar:UnipharPlc .
+
+uniphar:CommercialDept a foaf:Agent, dpv:OrganisationalUnit ;
+    dpv:hasName "Commercial Department"@en ;
+    skos:broaderTransitive uniphar:UnipharPlc .
+
+uniphar:CustomerServiceDept a foaf:Agent, dpv:OrganisationalUnit ;
+    dpv:hasName "Customer Service Department"@en ;
+    skos:broaderTransitive uniphar:UnipharPlc .
+
+uniphar:LegalDept a foaf:Agent, dpv:OrganisationalUnit ;
+    dpv:hasName "Legal Department"@en ;
+    skos:broaderTransitive uniphar:UnipharPlc .
+
+uniphar:ITServicesDept a foaf:Agent, dpv:OrganisationalUnit ;
+    dpv:hasName "Information Services Department"@en ;
+    skos:broaderTransitive uniphar:UnipharPlc .
+
+uniphar:CustomerServiceDept a foaf:Agent, dpv:OrganisationalUnit ;
+    dpv:hasName "Customer Service Department"@en ;
+    skos:broaderTransitive uniphar:UnipharPlc .
+
+uniphar:OperationsDept a foaf:Agent, dpv:OrganisationalUnit ;
+    dpv:hasName "Operations Department"@en ;
+    skos:broaderTransitive uniphar:UnipharPlc .
+
+uniphar:HealthAndSafety a foaf:Agent, dpv:OrganisationalUnit ;
+    dpv:hasName "Health and Safety Department"@en ;
+    skos:broaderTransitive uniphar:UnipharPlc .
+
+uniphar:Procurement a foaf:Agent, dpv:OrganisationalUnit ;
+    dpv:hasName "Procurement"@en ;
+    skos:broaderTransitive uniphar:UnipharPlc .
+
+uniphar:OperationsDept a foaf:Agent, dpv:OrganisationalUnit ;
+    dpv:hasName "Operations Department"@en ;
+    skos:broaderTransitive uniphar:UnipharPlc .
+
+uniphar:MasterData a foaf:Agent, dpv:OrganisationalUnit ;
+    dpv:hasName "Master Data Department"@en ;
+    skos:broaderTransitive uniphar:UnipharPlc .
+
+uniphar:Workday a foaf:Agent, dpv:Recipient ;
+    dpv:hasName "Workday Inc"@en ;
+    skos:broaderTransitive uniphar:Workday .
+
+uniphar:SAP a foaf:Agent, dpv:Recipient ;
+    dpv:hasName "SAP"@en ;
+    skos:broaderTransitive uniphar:SAP .
+
+
+uniphar:DPO a foaf:Agent, dpv:DataProtectionOfficer ;
+    dpv:hasName "Data Protection Officer (DPO)"@en ;
+    dpv:hasContact "dpo@uniphar.ie" ;
+    dct:isPartOf uniphar:UnipharPlc .
+
+uniphar:DataSubject a foaf:Agent, dpv:DataSubject ;
+    dpv:hasName "Data Subject"@en ;
+    skos:broaderTransitive uniphar:UnipharPlc .
+
+
+
+
+# Purposes
+
+uniphar:StaffSelection a dpv:Purpose ;
+    skos:broaderTransitive dpv:PersonnelManagement ;
+    skos:prefLabel "Select staff for the UNIPHAR Secretariat and the EDPB Secretariat"@en ;
+    skos:editorialNote "For general info on selection and recruitment at the UNIPHAR: https://uniphar.europa.eu/careers_en"@en .
+
+uniphar:Security a dpv:Purpose ;
+    skos:broaderTransitive dpv:PersonnelManagement ;
+    skos:prefLabel "Site Security"@en ;
+    skos:editorialNote "For general security "@en .
+
+uniphar:OfferEmployment a dpv:Purpose ;
+    skos:broaderTransitive dpv:PersonnelManagement ;
+    skos:prefLabel "Offer Employment"@en ;
+    skos:editorialNote "To make an offer of employment "@en .
+
+uniphar:StaffTraining a dpv:Purpose ;
+    skos:broaderTransitive dpv:PersonnelManagement ;
+    skos:prefLabel "Staff Training Record Keeping"@en ;
+    skos:editorialNote "To manage and record staff  training "@en .
+
+uniphar:PaymentOfExpenses a dpv:Purpose ;
+    skos:broaderTransitive dpv:PersonnelManagement ;
+    skos:prefLabel "Payment of Expenses "@en ;
+    skos:editorialNote "Payment of Expenses incurred by employees "@en .
+
+uniphar:ConductDisciplinaryProcess a dpv:Purpose ;
+    skos:broaderTransitive dpv:PersonnelManagement ;
+    skos:prefLabel "Conduct of Disciplinary Process"@en ;
+    skos:editorialNote "Conduct of Disciplinary Process "@en .
+
+uniphar:ConductRedundancyProcess a dpv:Purpose ;
+    skos:broaderTransitive dpv:PersonnelManagement ;
+    skos:prefLabel "Conduct of Redundancy Process"@en ;
+    skos:editorialNote "conduct of Redundancy Process "@en .
+
+uniphar:FleetManagement a dpv:Purpose ;
+    skos:broaderTransitive dpv:PersonnelManagement ;
+    skos:prefLabel "Fleet Management "@en ;
+    skos:editorialNote "Fleet Management for drivers of company provided vehicles "@en .
+
+uniphar:IllnessAndAbsenceManagement a dpv:Purpose ;
+    skos:broaderTransitive dpv:PersonnelManagement ;
+    skos:prefLabel "Illness and Absence Management"@en ;
+    skos:editorialNote "Illness and Absence Management "@en .
+
+uniphar:ConductBullyingInvestigaion a dpv:Purpose ;
+    skos:broaderTransitive dpv:PersonnelManagement ;
+    skos:prefLabel "Conduct of Bullying investigations"@en ;
+    skos:editorialNote "Conduct of Bullying investigations  "@en .
+
+uniphar:ConductIndustrialRelationsNegotiations a dpv:Purpose ;
+    skos:broaderTransitive dpv:PersonnelManagement ;
+    skos:prefLabel "Conduct Industrial relations negotiations"@en ;
+    skos:editorialNote "Conduct Industrial relations negotiations  "@en .
+
+uniphar:CompensationAndBenefitsAdmin a dpv:Purpose ;
+    skos:broaderTransitive dpv:PersonnelManagement ;
+    skos:prefLabel "Compensation And Benefits Admin"@en ;
+    skos:editorialNote "Compensation And Benefits Admin "@en .
+
+uniphar:SalaryAndBonusReviews  a dpv:Purpose ;
+    skos:broaderTransitive dpv:PersonnelManagement ;
+    skos:prefLabel "Salary And Bonus Reviews"@en ;
+    skos:editorialNote "Salary And Bonus Reviews "@en .
+
+uniphar:EmployeePerformanceManagement a dpv:Purpose ;
+    skos:broaderTransitive dpv:PersonnelManagement ;
+    skos:prefLabel "Employee Performance Management"@en ;
+    skos:editorialNote "Employee Performance Management "@en .
+
+uniphar:EmployeeOnboarding a dpv:Purpose ;
+    skos:broaderTransitive dpv:PersonnelManagement ;
+    skos:prefLabel "Employee Onboarding"@en ;
+    skos:editorialNote "Employee Onboarding "@en .
+
+uniphar:RecruitmentOfStaff a dpv:Purpose ;
+    skos:broaderTransitive dpv:PersonnelManagement ;
+    skos:prefLabel "Recruitment Of Staff"@en ;
+    skos:editorialNote "Recruitment Of Staff "@en .
+
+uniphar:InterviewCandidates a dpv:Purpose ;
+    skos:broaderTransitive dpv:PersonnelManagement ;
+    skos:prefLabel "Interview Candidates"@en ;
+    skos:editorialNote "Interview Candidates "@en .
+
+uniphar:DeskBookingService a dpv:Purpose ;
+    skos:broaderTransitive dpv:PersonnelManagement ;
+    skos:prefLabel "Desk Booking Service"@en ;
+    skos:editorialNote "Desk Booking Service"@en .
+
+uniphar:ManageEmployeeBusinessTravel a dpv:Purpose ;
+    skos:broaderTransitive dpv:PersonnelManagement ;
+    skos:prefLabel "Manage Employee Business Travel"@en ;
+    skos:editorialNote "Manage Employee Business Travel "@en .
+
+uniphar:WhistleblowingServiceForEmployees a dpv:Purpose ;
+    skos:broaderTransitive dpv:PersonnelManagement ;
+    skos:prefLabel "Whistleblowing service for employees"@en ;
+    skos:editorialNote "Whistleblowing service for employees "@en .
+
+uniphar:OnBoardNewEmployees a dpv:Purpose ;
+    skos:broaderTransitive dpv:PersonnelManagement ;
+    skos:prefLabel "On Board New Employees"@en ;
+    skos:editorialNote "On Board New Employees "@en .
+
+uniphar:EmployeeWellnessProgram  a dpv:Purpose ;
+    skos:broaderTransitive dpv:PersonnelManagement ;
+    skos:prefLabel "Employee Wellness Program"@en ;
+    skos:editorialNote "Employee Wellness Program "@en .
+
+uniphar:StaffDiversityAnalysis  a dpv:Purpose ;
+    skos:broaderTransitive dpv:PersonnelManagement ;
+    skos:prefLabel "Staff Diversity Analysis"@en ;
+    skos:editorialNote "Staff Diversity Analysis "@en .
+
+uniphar:MaintainStaffRecords  a dpv:Purpose ;
+    skos:broaderTransitive dpv:PersonnelManagement ;
+    skos:prefLabel "Maintain Staff Records"@en ;
+    skos:editorialNote "Maintain Staff Records "@en .
+
+uniphar:LearningAndDevelopment a dpv:Purpose ;
+    skos:broaderTransitive dpv:PersonnelManagement ;
+    skos:prefLabel "Learning and Development program"@en ;
+    skos:editorialNote "Learning and Development program for employees   to encompass educational training and employee development programs "@en .
+
+uniphar:CustomerManagement a dpv:Purpose ;
+    skos:broaderTransitive dpv:PersonnelManagement ;
+    skos:prefLabel "Customer Management"@en ;
+    skos:editorialNote "Customer Management "@en .
+
+uniphar:FinancialManagement a dpv:Purpose ;
+    skos:broaderTransitive dpv:PersonnelManagement ;
+    skos:prefLabel "Financial Management"@en ;
+    skos:editorialNote "Financial Management "@en .
+
+uniphar:Payroll  a dpv:Purpose ;
+    skos:broaderTransitive dpv:PersonnelManagement ;
+    skos:prefLabel "Payroll Administration"@en ;
+    skos:editorialNote "Payroll Administration "@en .
+
+uniphar:RegulatoryCompliance a dpv:Purpose ;
+    skos:broaderTransitive dpv:PersonnelManagement ;
+    skos:prefLabel "Regulatory Compliance"@en ;
+    skos:editorialNote "Regulatory Compliance with legal obligations "@en .
+
+uniphar:InformationTechnologyServiceProvision a dpv:Purpose ;
+    skos:broaderTransitive dpv:PersonnelManagement ;
+    skos:prefLabel "Information Technology Service Provision "@en ;
+    skos:editorialNote "Information Technology Service Provision "@en .
+
+uniphar:InformationTechnologySecurityProvision  a dpv:Purpose ;
+    skos:broaderTransitive dpv:PersonnelManagement ;
+    skos:prefLabel "Information Technology Security Provision"@en ;
+    skos:editorialNote "Information Technology Security Provision "@en .
+
+
+
+# Legal Basis
+uniphar:StaffRegulation a dpv:LegalBasis ;
+    skos:broaderTransitive dpv:LegalObligation ;
+    skos:prefLabel "The Staff Regulations (and particularly Art. 27-34) and the Conditions of Employment of Other Servants of the EU -the Decision of the UNIPHAR of 4 November 2020 adopting general implementing provisions relating to the engagement and the use of contract staff."@en .
+
+uniphar:LegitimateInterest a dpv:LegalBasis ;
+    skos:broaderTransitive dpv:LegalObligation ;
+    skos:prefLabel "The processing is necessary for the purposes of the legitimate interests pursued by the controller or by a third party, except where such interests are overridden by the interests or fundamental rights and freedoms of the data subject which require protection of personal data, in particular where the data subject is a child."@en .
+
+
+uniphar:Consent a dpv:LegalBasis ;
+    skos:broaderTransitive dpv:LegalObligation ;
+    skos:prefLabel "Consent of the Data Subject for specified processing."@en .
+
+ uniphar:ContractPerformance a dpv:LegalBasis ;
+    skos:broaderTransitive dpv:LegalObligation ;
+    skos:prefLabel "Fulfilment or performance of a contract involving specified processing."@en .
+
+uniphar:DataTransferLegalBasis a dpv:LegalBasis ;
+    skos:broaderTransitive dpv:LegalObligation ;
+    skos:prefLabel " Specific or special categories and instances of legal basis intended for justifying data transfers."@en .
+
+uniphar:VitalInterestOfDataSubject a dpv:LegalBasis ;
+    skos:broaderTransitive dpv:LegalObligation ;
+    skos:prefLabel "Processing is necessary or required to protect vital interests of a data subject."@en .
+
+uniphar:LegalObligation a dpv:LegalBasis ;
+    skos:broaderTransitive dpv:LegalObligation ;
+    skos:prefLabel "Processing is necessary to comply with a legal obligation."@en .
+
+
+
+# Data Subjects
+
+uniphar:JobApplicants a skos:DataSubject ;
+    skos:prefLabel "Job Applicants at UNIPHAR"@en ;
+    skos:broaderTransitive dpv:DataSubject .
+
+uniphar:Visitors a skos:DataSubject ;
+    skos:prefLabel "Visitors to facilities"@en ;
+    skos:broaderTransitive dpv:DataSubject .
+
+uniphar:CurrentEmployees a skos:DataSubject ;
+    skos:prefLabel "Current Employees"@en ;
+    skos:broaderTransitive dpv:DataSubject .
+
+uniphar:ExEmployees a skos:DataSubject ;
+    skos:prefLabel "Ex-Employees"@en ;
+    skos:broaderTransitive dpv:DataSubject .
+
+uniphar:JobCandidates a skos:DataSubject ;
+    skos:prefLabel "Job Candidates"@en ;
+    skos:broaderTransitive dpv:DataSubject .
+
+uniphar:Suppliers a skos:DataSubject ;
+    skos:prefLabel "Suppliers"@en ;
+    skos:broaderTransitive dpv:DataSubject .
+
+uniphar:WebsiteVisitors a skos:DataSubject ;
+    skos:prefLabel "Website Visitors"@en ;
+    skos:broaderTransitive dpv:DataSubject .
+
+uniphar:Customers a skos:DataSubject ;
+    skos:prefLabel "Customers"@en ;
+    skos:broaderTransitive dpv:DataSubject .
+
+uniphar:Patients a skos:DataSubject ;
+    skos:prefLabel "Patients"@en ;
+    skos:broaderTransitive dpv:DataSubject .
+
+
+# Personal Data
+uniphar:DataOfStaffCandidates a dpv:PersonalData ;
+    skos:prefLabel "Data of Staff Candidates"@en ;
+    skos:editorialNote """(staff selection): - Data identifying the applicant and contact details (name, first name, gender, nationality, date and place of birth, postal and e-mail address, telephone number, mobile telephone number, fax number). - Data derived from the candidate’s application and CV, his/her motivation letter and other supporting documents submitted, namely current entity of assignment or current employer EUI in case of inter-institutional and for external applicants: institution/company and department, country of residence, as well as function group, grade, step, seniority in the current job, type of post of the person, type of post of the current job, in case of AST officials applying for AD vacancies: information related to certification procedure - Documents requested in the vacancy notice to verify whether the application is admissible or not: a curriculum vitae, a covering letter or motivation letters and other supporting documents submitted by the applicants including information on education, competencies and language skills, diplomas and certificates, professional experience (including names of previous and current employers, duration of employment, level of responsibility), the last two staff evaluation reports and a certificate proving the applicant’s status and grade in case of interinstitutional transfers On their own initiative, applicants may send documents such as letters of recommendation, certificates showing language competences, etc. - Information related to potential conflict of interest is also processed (the Conflict of Interests Form)."""@en ;
+    skos:narrowerTransitive uniphar:JobApplicantCV .
+uniphar:JobApplicantCV a dpv:PersonalData ;
+    skos:narrowerTransitive uniphar:JobApplicantName,
+                            uniphar:JobApplicantGender,
+                            uniphar:JobApplicantBirthDate,
+                            uniphar:JobApplicantBirthPlace,
+                            uniphar:JobApplicantContact,
+                            uniphar:JobApplicantProfessionalExperience,
+                            uniphar:JobApplicantProfessionalExperience,
+                            uniphar:JobApplicantEducationalQualifications ;
+    dpv:hasDataSource uniphar:JobApplicants ;
+    skos:prefLabel "Job Applicant CV"@en .
+uniphar:JobApplicantName a dpv:PersonalData, dpv:DerivedPersonalData ;
+    skos:broaderTransitive dpv-pd:Name ;
+    dpv:hasDataSource uniphar:JobApplicantCV ;
+    skos:prefLabel "Name"@en .
+uniphar:JobApplicantGender a dpv:PersonalData, dpv:DerivedPersonalData ;
+    skos:broaderTransitive dpv-pd:Gender ;
+    dpv:hasDataSource uniphar:JobApplicantCV ;
+    skos:prefLabel "Gender"@en .
+uniphar:JobApplicantBirthDate a dpv:PersonalData, dpv:DerivedPersonalData ;
+    skos:broaderTransitive dpv-pd:BirthDate ;
+    dpv:hasDataSource uniphar:JobApplicantCV ;
+    skos:prefLabel "BirthDate"@en .
+uniphar:JobApplicantBirthPlace a dpv:PersonalData, dpv:DerivedPersonalData ;
+    skos:broaderTransitive dpv-pd:BirthPlace ;
+    dpv:hasDataSource uniphar:JobApplicantCV ;
+    skos:prefLabel "BirthPlace"@en .
+uniphar:JobApplicantContact a dpv:PersonalData, dpv:DerivedPersonalData ;
+    skos:broaderTransitive dpv-pd:Contact ;
+    dpv:hasDataSource uniphar:JobApplicantCV ;
+    skos:prefLabel "Contact"@en .
+uniphar:JobApplicantProfessionalExperience a dpv:PersonalData, dpv:DerivedPersonalData ;
+    skos:broaderTransitive dpv-pd:Job ;
+    dpv:hasDataSource uniphar:JobApplicantCV ;
+    skos:prefLabel "Professional Experience"@en .
+uniphar:JobApplicantProfessionalExperience a dpv:PersonalData, dpv:DerivedPersonalData ;
+    skos:broaderTransitive dpv-pd:Job ;
+    dpv:hasDataSource uniphar:JobApplicantCV ;
+    skos:prefLabel "Professional Experience"@en .
+uniphar:JobApplicantEducationalQualifications a dpv:PersonalData, dpv:DerivedPersonalData ;
+    skos:broaderTransitive dpv-pd:EducationalQualification ;
+    dpv:hasDataSource uniphar:JobApplicantCV ;
+    skos:prefLabel "Educational Qualifications"@en .
+uniphar:JobApplicantDisability a dpv:PersonalData ;
+    skos:broaderTransitive dpv-pd:HealthData ;
+    dpv:hasDataSource uniphar:JobApplicants ;
+    dpv:hasContext dpv:Optional ;
+    skos:prefLabel "Disability"@en .
+uniphar:JobApplicantSpecialHealthNeeds a dpv:PersonalData ;
+    skos:broaderTransitive dpv-pd:HealthData ;
+    dpv:hasDataSource uniphar:JobApplicants ;
+    dpv:hasContext dpv:Optional ;
+    skos:prefLabel "Special Health Needs"@en .
+uniphar:CCTV_Image a dpv:PersonalData ;
+    skos:broaderTransitive dpv-pd:HealthData ;
+    dpv:hasDataSource uniphar:JobApplicants ;
+    dpv:hasContext dpv:Optional ;
+    skos:prefLabel "Special Health Needs"@en .
+uniphar:FinancialData a dpv:PersonalData ;
+    skos:broaderTransitive dpv-pd:HealthData ;
+    dpv:hasDataSource uniphar:DataSubject ;
+    dpv:hasContext dpv:Optional ;
+    skos:prefLabel "Financial Data"@en. 
+uniphar:CreditData a dpv:PersonalData ;
+    skos:broaderTransitive dpv-pd:Credit ;
+    dpv:hasDataSource uniphar:DataSubject ;
+    dpv:hasContext dpv:Optional ;
+    skos:prefLabel "Financial Data"@en. 
+uniphar:Authenticating a dpv:PersonalData ;
+    skos:broaderTransitive dpv-pd:Authenticating ;
+    dpv:hasDataSource uniphar:DataSubject ;
+    dpv:hasContext dpv:Optional ;
+    skos:prefLabel "Authenticating Data"@en. 
+uniphar:Behavioral  a dpv:PersonalData ;
+    skos:broaderTransitive dpv-pd:Behavioral  ;
+    dpv:hasDataSource uniphar:DataSubject ;
+    dpv:hasContext dpv:Optional ;
+    skos:prefLabel "Behavioral Data"@en. 
+uniphar:Communication a dpv:PersonalData ;
+    skos:broaderTransitive dpv-pd:Communication ;
+    dpv:hasDataSource uniphar:DataSubject ;
+    dpv:hasContext dpv:Optional ;
+    skos:prefLabel "Communication Data "@en. 
+uniphar:Contact  a dpv:PersonalData ;
+    skos:broaderTransitive dpv-pd:Contact  ;
+    dpv:hasDataSource uniphar:DataSubject ;
+    dpv:hasContext dpv:Optional ;
+    skos:prefLabel "Contact Data"@en. 
+uniphar:Credit a dpv:PersonalData ;
+    skos:broaderTransitive dpv-pd:Credit ;
+    dpv:hasDataSource uniphar:DataSubject ;
+    dpv:hasContext dpv:Optional ;
+    skos:prefLabel "Credit Data"@en. 
+uniphar:Demographic  a dpv:PersonalData ;
+    skos:broaderTransitive dpv-pd:Demographic ;
+    dpv:hasDataSource uniphar:DataSubject ;
+    dpv:hasContext dpv:Optional ;
+    skos:prefLabel "Demographic Data"@en. 
+uniphar:DeviceBased  a dpv:PersonalData ;
+    skos:broaderTransitive dpv-pd:DeviceBased  ;
+    dpv:hasDataSource uniphar:DataSubject ;
+    dpv:hasContext dpv:Optional ;
+    skos:prefLabel "Device Based Data "@en. 
+uniphar:Family  a dpv:PersonalData ;
+    skos:broaderTransitive dpv-pd:Family ;
+    dpv:hasDataSource uniphar:DataSubject ;
+    dpv:hasContext dpv:Optional ;
+    skos:prefLabel "Family Data"@en. 
+uniphar:FinancialAccount  a dpv:PersonalData ;
+    skos:broaderTransitive dpv-pd:FinancialAccount ;
+    dpv:hasDataSource uniphar:DataSubject ;
+    dpv:hasContext dpv:Optional ;
+    skos:prefLabel "Financial Account Data"@en. 
+uniphar:Identifying a dpv:PersonalData ;
+    skos:broaderTransitive dpv-pd:Identifying ;
+    dpv:hasDataSource uniphar:DataSubject ;
+    dpv:hasContext dpv:Optional ;
+    skos:prefLabel "Identifying Data"@en. 
+uniphar:KnowledgeBelief  a dpv:PersonalData ;
+    skos:broaderTransitive dpv-pd:KnowledgeBelief ;
+    dpv:hasDataSource uniphar:DataSubject ;
+    dpv:hasContext dpv:Optional ;
+    skos:prefLabel "Knowledge Belief Data"@en. 
+uniphar:LifeHistory a dpv:PersonalData ;
+    skos:broaderTransitive dpv-pd:LifeHistory ;
+    dpv:hasDataSource uniphar:DataSubject ;
+    dpv:hasContext dpv:Optional ;
+    skos:prefLabel "Life History Data"@en. 
+uniphar:Location a dpv:PersonalData ;
+    skos:broaderTransitive dpv-pd:Location ;
+    dpv:hasDataSource uniphar:DataSubject ;
+    dpv:hasContext dpv:Optional ;
+    skos:prefLabel "Location Data"@en. 
+uniphar:MedicalHealth a dpv:PersonalData ;
+    skos:broaderTransitive dpv-pd:MedicalHealth ;
+    dpv:hasDataSource uniphar:DataSubject ;
+    dpv:hasContext dpv:Optional ;
+    skos:prefLabel "Medical Health Data"@en. 
+uniphar:Preference  a dpv:PersonalData ;
+    skos:broaderTransitive dpv-pd:Preference ;
+    dpv:hasDataSource uniphar:DataSubject ;
+    dpv:hasContext dpv:Optional ;
+    skos:prefLabel "Preference Data"@en. 
+uniphar:Professional a dpv:PersonalData ;
+    skos:broaderTransitive dpv-pd:Professional ;
+    dpv:hasDataSource uniphar:DataSubject ;
+    dpv:hasContext dpv:Optional ;
+    skos:prefLabel "Professional Data"@en. 
+uniphar:SocialNetwork a dpv:PersonalData ;
+    skos:broaderTransitive dpv-pd:SocialNetwork ;
+    dpv:hasDataSource uniphar:DataSubject ;
+    dpv:hasContext dpv:Optional ;
+    skos:prefLabel "Social Network Data"@en. 
+uniphar:Transactional  a dpv:PersonalData ;
+    skos:broaderTransitive dpv-pd:Transactional ;
+    dpv:hasDataSource uniphar:DataSubject ;
+    dpv:hasContext dpv:Optional ;
+    skos:prefLabel "Transactional Data"@en. 
+
+
+
+# Tech/Org Measures
+
+uniphar:RestrictedMailboxForSelectionCommittee a dpv:TechnicalMeasure ;
+    skos:broaderTransitive dpv:AccessControlMethod ;
+    skos:prefLabel "Restricted Mailbox for Selection Committee"@en ;
+    skos:editorialNote """Electronic file: applications from candidate are kept in the functional mailbox, which has restricted access to the HR colleagues in charge of selection and the Head of the HRBA unit."""@en .
+
+uniphar:LockedPaperCabinet a dpv:TechnicalMeasure, dpv:OrganisationalMeasure ;
+    skos:broaderTransitive dpv:AccessControlMethod, dpv:AuthorisationProcedure ;
+    skos:prefLabel "Locked Paper Cabinet with need-to-know access"@en ;
+    skos:editorialNote """Paper file : are stored in a cupboard in a locked office to which only a restricted of HR colleagues have access on a need-to-know basis."""@en .
+
+uniphar:DataProtectionNoticeStaffSelection a dpv:OrganisationalMeasure ;
+    skos:broaderTransitive dpv:PrivacyNotice ;
+    dpv:hasLocation <https://uniphar.europa.eu/data-protection/our-work/publications/data-protection-notices/01-uniphar-data-protection-notice-staff_en> ;
+    skos:prefLabel "Data Protection Notice for Staff Selection"@en .
+
+
+uniphar:Measure1 a dpv:TechnicalMeasure ;
+    skos:broaderTransitive dpv:AccessControlMethod ;
+    skos:prefLabel "Measure 1"@en ;
+    skos:editorialNote """Electronic file: applications from candidate are kept in the functional mailbox, which has restricted access to the HR colleagues in charge of selection and the Head of the HRBA unit."""@en .
+
+
+uniphar:Measure2 a dpv:TechnicalMeasure, dpv:OrganisationalMeasure ;
+    skos:broaderTransitive dpv:AccessControlMethod, dpv:AuthorisationProcedure ;
+    skos:prefLabel "Measure 2"@en ;
+    skos:editorialNote """Paper file : are stored in a cupboard in a locked office to which only a restricted of HR colleagues have access on a need-to-know basis."""@en .
+
+
+
+
+
+
+# Rights
+uniphar:DataSubjectRights a dpv:DataSubjectRight ;
+    skos:broaderTransitive dpv-gdpr:A15, dpv-gdpr:A16, dpv-gdpr:A20, dpv-gdpr:A21 ;
+    skos:prefLabel "Information on exercising rights"@en ;
+    skos:editorialNote """For more information, including how to exercise your rights to access, rectification, object and data portability (where applicable), see the data protection notice: https://uniphar.europa.eu/data-protection/our-work/publications/data-protection-notices/01-uniphar-data-protection-notice-staff_en"""@en ;
+    dpv:hasLocation <https://uniphar.europa.eu/data-protection/our-work/publications/data-protection-notices/01-uniphar-data-protection-notice-staff_en> .
