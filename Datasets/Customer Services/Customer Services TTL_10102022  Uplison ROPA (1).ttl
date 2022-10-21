@@ -1,0 +1,67 @@
+
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dpv: <https://w3id.org/dpv/dpv-skos#> .
+@prefix dpv-gdpr: <https://w3id.org/dpv/dpv-skos/dpv-gdpr#> .
+@prefix dpv-pd: <https://w3id.org/dpv/dpv-skos/dpv-pd#> .
+@prefix dpv-tech: <https://w3id.org/dpv/dpv-skos/dpv-tech#> .
+@prefix dpcat: <https://w3id.org/dpcat#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix time: <https://www.w3.org/TR/owl-time/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+
+@prefix upsilon: <https://w3id.org/dpcat/examples/UPSILON/vocab#> .
+@prefix : <https://w3id.org/dpcat/examples/UPSILON#> .
+
+: a dpcat:ROPA ;
+    dct:title " Customer Services Activities "@en ;
+    dct:description " Customer Services Personal Data Processing Activities "@en ;
+    dct:created "2022-09-09"^^xsd:date ;
+    dct:identifier "CS1"^^xsd:string ;
+    dct:publisher upsilon:CustomerServiceDept ;
+    dcat:contactPoint upsilon:CustomerServiceDept ;
+    dcat:dataset :Rec005  .
+
+
+:Rec005 a dpcat:ROPARecord ;
+    dct:title "Customer Service Management "@en ;
+    dct:description "Customer Service Management "@en ;
+    dct:created "2022-09-09"^^xsd:date ;
+    dct:publisher upsilon:CustomerServiceDept     ;
+    dcat:contactPoint upsilon:CustomerServiceDept   ;
+
+    dpv:hasDataController upsilon:UpsilonPlc ;
+    dpv:hasResponsibleEntity upsilon:CustomerServiceDept   ;
+    
+    dpv:hasPersonalData  upsilon:Contact     ;
+   
+ 
+    dpv:hasPurpose upsilon:CustomerManagement     ;
+    dpv:hasLegalBasis upsilon:LegitimateInterest    ; 
+    dpv:hasDataSubject upsilon:Customers   ;
+    dpv:hasRight upsilon:DataSubjectRights ;
+    
+    dpv:hasRecipient upsilon:CRM  ;
+
+    dpv:hasCountry upsilon:UnitedKingdom ;
+    dpv:hasSafeguardForDataTransfer upsilon:Adequacy;
+
+    dpv:hasTechnicalOrganisationalMeasure upsilon:EncryptionInRest, upsilon:BusinessContinuityPlan, upsilon:EncryptionInTransfer, upsilon:MultiFactorAuthentication ;
+
+    dpv:hasPersonalData upsilon:FinancialData    ;
+    dpv:hasStorage [
+        a dpv:StorageCondition ;
+        skos:editorialNote """CRM data Processed held for two years after end of customer relationship."""@en ;
+        dpv:hasDuration [
+            a dpv:StorageDuration, time:Duration ;
+            dpv:hasPersonalData upsilon:Contact   ;
+            dpv:isAfter "End of relationship"@en ;
+            time:numericDuration "2"^^xsd:decimal ;
+            time:unitType :unitYear ;
+            ] ;
+        ] .
+
+
