@@ -1,0 +1,865 @@
+
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dpv: <https://w3id.org/dpv/dpv-skos#> .
+@prefix dpv-gdpr: <https://w3id.org/dpv/dpv-skos/dpv-gdpr#> .
+@prefix dpv-pd: <https://w3id.org/dpv/dpv-skos/dpv-pd#> .
+@prefix dpv-tech: <https://w3id.org/dpv/dpv-skos/dpv-tech#> .
+@prefix dpcat: <https://w3id.org/dpcat#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix time: <https://www.w3.org/TR/owl-time/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+
+@prefix upsilon: <https://w3id.org/dpcat/examples/UPSILON/vocab#> .
+@prefix : <https://w3id.org/dpcat/examples/UPSILON/HR01a#> .
+
+: a dpcat:ROPA ;
+    dct:title " Human Resource Activities "@en ;
+    dct:description " Human Resources Personal Data Processing Activities "@en ;
+    dct:created "2022-18-08"^^xsd:date ;
+    dct:identifier "HR01a"^^xsd:string ;
+    dct:publisher upsilon:HumanResources ;
+    dcat:contactPoint upsilon:HumanResources ;
+    dcat:dataset  :Rec004, :Rec006, :Rec007 ,  :Rec009, :Rec010  .
+
+
+
+:Rec004 a dpcat:ROPARecord ;
+    dct:title "Payroll Processing "@en ;
+    dct:description "Payroll Processing "@en ;
+    dct:created "2021-11-03"^^xsd:date ;
+    dct:publisher upsilon:HumanResources    ;
+    dcat:contactPoint upsilon:HumanResources  ;
+
+    dpv:hasDataController upsilon:UpsilonPlc ;
+    dpv:hasResponsibleEntity upsilon:HumanResources  ;
+    
+    dpv:hasPersonalData  upsilon:FinancialData   ;
+   
+ 
+    dpv:hasPurpose upsilon:Payroll    ;
+    dpv:hasLegalBasis upsilon:ContractPerformance   ; 
+    dpv:hasDataSubject upsilon:CurrentEmployees   ;
+    dpv:hasRight upsilon:DataSubjectRights ;
+    
+    dpv:hasRecipient upsilon:HRSystem  ;
+
+    dpv:hasTechnicalOrganisationalMeasure upsilon:EncryptionInRest, upsilon:BusinessContinuityPlan, upsilon:EncryptionInTransfer, upsilon:MultiFactorAuthentication ;
+
+    dpv:hasPersonalData upsilon:FinancialData    ;
+    dpv:hasStorage [
+        a dpv:StorageCondition ;
+        skos:editorialNote """The time-limits for storing the Payroll data are as follows: -  7 years."""@en ;
+        dpv:hasDuration [
+            a dpv:StorageDuration, time:Duration ;
+            dpv:hasPersonalData upsilon:FinancialData ;
+            dpv:isAfter "Payroll Processing year"@en ;
+            time:numericDuration "7"^^xsd:decimal ;
+            time:unitType :unitYear ;
+            ] ;
+        ] .
+
+
+:Rec006 a dpcat:ROPARecord ;
+    dct:title "Staff Recruitment "@en ;
+    dct:description "Staff Recruitment "@en ;
+    dct:created "2021-11-03"^^xsd:date ;
+    dct:publisher upsilon:HumanResources   ;
+    dcat:contactPoint upsilon:HumanResources    ;
+
+    dpv:hasDataController upsilon:UpsilonPlc ;
+    dpv:hasResponsibleEntity upsilon:HumanResources    ;
+    
+    dpv:hasPersonalData  upsilon:DataOfStaffCandidates      ;
+   
+ 
+    dpv:hasPurpose upsilon:RecruitmentOfStaff      ;
+    dpv:hasLegalBasis upsilon:Consent     ; 
+    dpv:hasDataSubject upsilon:JobCandidates    ;
+    dpv:hasRight upsilon:DataSubjectRights ;
+    
+    dpv:hasRecipient upsilon:HRSystem   ;
+
+    dpv:hasTechnicalOrganisationalMeasure upsilon:EncryptionInRest, upsilon:BusinessContinuityPlan, upsilon:EncryptionInTransfer, upsilon:MultiFactorAuthentication ;
+
+    dpv:hasPersonalData upsilon:DataOfStaffCandidates     ;
+    dpv:hasStorage [
+        a dpv:StorageCondition ;
+        skos:editorialNote """Recruitment data held for six after end of customer relationship."""@en ;
+        dpv:hasDuration [
+            a dpv:StorageDuration, time:Duration ;
+            dpv:hasPersonalData upsilon:Contact   ;
+            dpv:isAfter "End of relationship"@en ;
+            time:numericDuration "6"^^xsd:decimal ;
+            time:unitType :unitMonth ;
+            ] ;
+        ] .
+
+
+:Rec007 a dpcat:ROPARecord ;
+    dct:title " Management of Fleet Drivers "@en ;
+    dct:description "Management of Fleet Drivers "@en ;
+    dct:created "2021-11-03"^^xsd:date ;
+    dct:publisher upsilon:HumanResources   ;
+    dcat:contactPoint upsilon:HumanResources    ;
+
+    dpv:hasDataController upsilon:UpsilonPlc ;
+    dpv:hasResponsibleEntity upsilon:HumanResources    ;
+    
+    dpv:hasPersonalData  upsilon:DataOfStaffCandidates      ;
+   
+ 
+    dpv:hasPurpose upsilon:FleetManagement       ;
+    dpv:hasLegalBasis upsilon:Consent     ; 
+    dpv:hasDataSubject upsilon:CurrentEmployees     ;
+    dpv:hasRight upsilon:DataSubjectRights ;
+    
+    dpv:hasRecipient upsilon:HRSystem   ;
+
+    dpv:hasTechnicalOrganisationalMeasure upsilon:EncryptionInRest, upsilon:BusinessContinuityPlan, upsilon:EncryptionInTransfer, upsilon:MultiFactorAuthentication ;
+
+    dpv:hasPersonalData upsilon:CurrentEmployees      ;
+    dpv:hasStorage [
+        a dpv:StorageCondition ;
+        skos:editorialNote """Fleet Driver Data data held for Two years after end of customer relationship."""@en ;
+        dpv:hasDuration [
+            a dpv:StorageDuration, time:Duration ;
+            dpv:hasPersonalData upsilon:Contact   ;
+            dpv:isAfter "End of relationship"@en ;
+            time:numericDuration "2"^^xsd:decimal ;
+            time:unitType :unitYear ;
+            ] ;
+        ] .
+
+
+
+
+:Rec009 a dpcat:ROPARecord ;
+    dct:title " Management of Employee Illness and Benefits "@en ;
+    dct:description "Management of Employee Illness and Benefits, as per legal obligatiions "@en ;
+    dct:created "2021-11-03"^^xsd:date ;
+    dct:publisher upsilon:HumanResources   ;
+    dcat:contactPoint upsilon:HumanResources    ;
+
+    dpv:hasDataController upsilon:UpsilonPlc ;
+    dpv:hasResponsibleEntity upsilon:HumanResources    ;
+    
+    dpv:hasPersonalData  upsilon:CurrentEmployees       ;
+   
+ 
+    dpv:hasPurpose upsilon:IllnessAndAbsenceManagement        ;
+    dpv:hasLegalBasis upsilon:LegalObligation      ; 
+    dpv:hasDataSubject upsilon:CurrentEmployees     ;
+    dpv:hasRight upsilon:DataSubjectRights ;
+    
+    dpv:hasRecipient upsilon:HRSystem   ;
+
+    dpv:hasTechnicalOrganisationalMeasure upsilon:EncryptionInRest, upsilon:BusinessContinuityPlan, upsilon:EncryptionInTransfer, upsilon:MultiFactorAuthentication ;
+
+    dpv:hasPersonalData upsilon:CurrentEmployees      ;
+    dpv:hasStorage [
+        a dpv:StorageCondition ;
+        skos:editorialNote """Illness  data held for Two years after end of employee relationship."""@en ;
+        dpv:hasDuration [
+            a dpv:StorageDuration, time:Duration ;
+            dpv:hasPersonalData upsilon:Contact   ;
+            dpv:isAfter "End of relationship"@en ;
+            time:numericDuration "2"^^xsd:decimal ;
+            time:unitType :unitYear ;
+            ] ;
+        ] .
+
+:Rec010 a dpcat:ROPARecord ;
+    dct:title " Processing of Employee Expenses "@en ;
+    dct:description "Processing of Employee Expenses "@en ;
+    dct:created "2021-11-03"^^xsd:date ;
+    dct:publisher upsilon:HumanResources   ;
+    dcat:contactPoint upsilon:HumanResources    ;
+
+    dpv:hasDataController upsilon:UpsilonPlc ;
+    dpv:hasResponsibleEntity upsilon:HumanResources    ;
+    
+    dpv:hasPersonalData  upsilon:FinancialData       ;
+   
+ 
+    dpv:hasPurpose upsilon:PaymentOfExpenses        ;
+    dpv:hasLegalBasis upsilon:ContractPerformance      ; 
+    dpv:hasDataSubject upsilon:CurrentEmployees     ;
+    dpv:hasRight upsilon:DataSubjectRights ;
+    
+    dpv:hasRecipient upsilon:ExpensesSys   ;
+	dpv:hasProcessor upsilon:ExpensesSys   ;
+
+    dpv:hasTechnicalOrganisationalMeasure upsilon:EncryptionInRest, upsilon:BusinessContinuityPlan, upsilon:EncryptionInTransfer, upsilon:MultiFactorAuthentication ;
+
+    dpv:hasPersonalData upsilon:CurrentEmployees      ;
+    dpv:hasStorage [
+        a dpv:StorageCondition ;
+        skos:editorialNote """Employee Expense Data held for seven full years from year of Processing."""@en ;
+        dpv:hasDuration [
+            a dpv:StorageDuration, time:Duration ;
+            dpv:hasPersonalData upsilon:Contact   ;
+            dpv:isAfter "End of relationship"@en ;
+            time:numericDuration "7"^^xsd:decimal ;
+            time:unitType :unitYear ;
+            ] ;
+        ] .
+
+
+
+### UPSILON vocab ###
+
+upsilon:UpsilonPlc a foaf:Agent, dpv:LegalEntity ;
+    dpv:hasName "Upsilon Plc"@en ;
+    dpv:hasContact "Postal address: 4045 Kingswood Road, 4045 Kingswood Road, Dublin, D24 V06K." ;
+    dpv:hasContact "Office address: 4045 Kingswood Road, 4045 Kingswood Road, Dublin, D24 V06K." ;
+    dpv:hasContact "Telephone: +353 1 4041628" ;
+    dpv:hasContact "Email: info@upsilon.ie" ;
+    dpv:hasContact "Website: https://upsilon.ie" .
+
+
+upsilon:AllpharServices a foaf:Agent, dpv:LegalEntity ;
+    dpv:hasName "Allphar Services Ltd."@en ;
+    dpv:hasContact "Postal address: 4045 Kingswood Road, 4045 Kingswood Road, Dublin, D24 V06K." ;
+    dpv:hasContact "Office address: 4045 Kingswood Road, 4045 Kingswood Road, Dublin, D24 V06K." ;
+    dpv:hasContact "Telephone: +353 1 4041628" ;
+    dpv:hasContact "Email: info@allphar.ie" ;
+    dpv:hasContact "Website: https://allphar.ie" .
+
+upsilon:DeskBookers a foaf:Agent, dpv:LegalEntity ;
+    dpv:hasName "Desk Bookers Ltd."@en ;
+    dpv:hasContact "Postal address: 103 Belgard Road, Dublin, D24 WX63." ;
+    dpv:hasContact "Office address: 103 Belgard Road, Dublin, D24 WX63." ;
+    dpv:hasContact "Telephone: +353 1 4231614" ;
+    dpv:hasContact "Email: info@DeskBookers.ie"; 
+    dpv:hasContact "Website: https://DeskBookers.ie" .
+
+ 
+
+upsilon:ExpensesSys   a foaf:Agent, dpv:LegalEntity ;
+    dpv:hasName "Expense Processing Services Ltd."@en ;
+    dpv:hasContact "Postal address: 103 Cook Road, Dublin, D2 WX99." ;
+    dpv:hasContact "Office address: 103 Cook Road, Dublin, D2 WX99." ;
+    dpv:hasContact "Telephone: +353 1 4231614" ;
+    dpv:hasContact "Email: info@ExpensesSys.ie"; 
+    dpv:hasContact "Website: https://ExpensesSys.ie" .
+
+upsilon:Security a foaf:Agent, dpv:OrganisationalUnit ;
+    dpv:hasName "Security Services_Security Unit"@en ;
+    dpv:hasContact "Email: upsilon-selections@upsilon.europa.eu" ;
+    dpv:hasContact "https://upsilon.europa.eu/form/upsilonweb-contact-form_en" ;
+    skos:broaderTransitive upsilon:UpsilonPlc .
+
+upsilon:HumanResources a foaf:Agent, dpv:OrganisationalUnit ;
+    dpv:hasName "Human Resources Department"@en ;
+    skos:broaderTransitive upsilon:UpsilonPlc .
+
+upsilon:Finance a foaf:Agent, dpv:OrganisationalUnit ;
+    dpv:hasName "Finance Department"@en ;
+    skos:broaderTransitive upsilon:UpsilonPlc .
+
+upsilon:Facilities a foaf:Agent, dpv:OrganisationalUnit ;
+    dpv:hasName "Facilities Management"@en ;
+    skos:broaderTransitive upsilon:UpsilonPlc .
+
+upsilon:Quality a foaf:Agent, dpv:OrganisationalUnit ;
+    dpv:hasName "Quality Department "@en ;
+    skos:broaderTransitive upsilon:UpsilonPlc .
+
+upsilon:Corporate a foaf:Agent, dpv:OrganisationalUnit ;
+    dpv:hasName "Corporate Services"@en ;
+    skos:broaderTransitive upsilon:UpsilonPlc .
+
+upsilon:SelectionCommittee1 a foaf:Agent, dpv:OrganisationalUnit ;
+    dpv:hasName "For the selection of a Director, the Supervisor can be consulted"@en ;
+    skos:broaderTransitive upsilon:UpsilonPlc .
+
+upsilon:SelectionCommittee2 a foaf:Agent, dpv:OrganisationalUnit ;
+    dpv:hasName "For the selection of a Director, the Supervisor can be consulted"@en ;
+    skos:broaderTransitive upsilon:UpsilonPlc .
+
+upsilon:SelectionCommittee3 a foaf:Agent, dpv:OrganisationalUnit ;
+    dpv:hasName "For the selection of a Director, the Supervisor can be consulted"@en ;
+    skos:broaderTransitive upsilon:UpsilonPlc .
+
+upsilon:CommercialDept a foaf:Agent, dpv:OrganisationalUnit ;
+    dpv:hasName "Commercial Department"@en ;
+    skos:broaderTransitive upsilon:UpsilonPlc .
+
+upsilon:CustomerServiceDept a foaf:Agent, dpv:OrganisationalUnit ;
+    dpv:hasName "Customer Service Department"@en ;
+    skos:broaderTransitive upsilon:UpsilonPlc .
+
+upsilon:LegalDept a foaf:Agent, dpv:OrganisationalUnit ;
+    dpv:hasName "Legal Department"@en ;
+    skos:broaderTransitive upsilon:UpsilonPlc .
+
+upsilon:ITServicesDept a foaf:Agent, dpv:OrganisationalUnit ;
+    dpv:hasName "Information Services Department"@en ;
+    skos:broaderTransitive upsilon:UpsilonPlc .
+
+upsilon:CustomerServiceDept a foaf:Agent, dpv:OrganisationalUnit ;
+    dpv:hasName "Customer Service Department"@en ;
+    skos:broaderTransitive upsilon:UpsilonPlc .
+
+upsilon:OperationsDept a foaf:Agent, dpv:OrganisationalUnit ;
+    dpv:hasName "Operations Department"@en ;
+    skos:broaderTransitive upsilon:UpsilonPlc .
+
+upsilon:HealthAndSafety a foaf:Agent, dpv:OrganisationalUnit ;
+    dpv:hasName "Health and Safety Department"@en ;
+    skos:broaderTransitive upsilon:UpsilonPlc .
+
+upsilon:Procurement a foaf:Agent, dpv:OrganisationalUnit ;
+    dpv:hasName "Procurement"@en ;
+    skos:broaderTransitive upsilon:UpsilonPlc .
+
+upsilon:OperationsDept a foaf:Agent, dpv:OrganisationalUnit ;
+    dpv:hasName "Operations Department"@en ;
+    skos:broaderTransitive upsilon:UpsilonPlc .
+
+upsilon:MasterData a foaf:Agent, dpv:OrganisationalUnit ;
+    dpv:hasName "Master Data Department"@en ;
+    skos:broaderTransitive upsilon:UpsilonPlc .
+
+upsilon:HRSystem a foaf:Agent, dpv:Recipient ;
+    dpv:hasName "Human Resources System Inc"@en ;
+    skos:broaderTransitive upsilon:HRSystem .
+
+
+upsilon:SecurityNow a foaf:Agent, dpv:Recipient ;
+    dpv:hasName "Security Now Ltd."@en ;
+    skos:broaderTransitive upsilon:SecurityNow .
+
+upsilon:DeskBookers  a foaf:Agent, dpv:Recipient ;
+    dpv:hasName "Desk Bookers Ltd."@en ;
+    skos:broaderTransitive upsilon:DeskBookers .
+
+upsilon:CRM a foaf:Agent, dpv:Recipient ;
+    dpv:hasName "Customer Relationship Management System"@en ;
+    skos:broaderTransitive upsilon:CRM .
+
+upsilon:ExpensesSys a foaf:Agent, dpv:Recipient ;
+    dpv:hasName "Expenses System"@en ;
+    skos:broaderTransitive upsilon:ExpensesSys .
+
+upsilon:ERP a foaf:Agent, dpv:Recipient ;
+    dpv:hasName "Enterprise Resource System"@en ;
+    skos:broaderTransitive upsilon:ERP .
+
+
+upsilon:DPO a foaf:Agent, dpv:DataProtectionOfficer ;
+    dpv:hasName "Data Protection Officer (DPO)"@en ;
+    dpv:hasContact "dpo@upsilon.ie" ;
+    dct:isPartOf upsilon:UpsilonPlc .
+
+upsilon:DataSubject a foaf:Agent, dpv:DataSubject ;
+    dpv:hasName "Data Subject"@en ;
+    skos:broaderTransitive upsilon:UpsilonPlc .
+
+
+
+
+# Purposes
+
+upsilon:StaffSelection a dpv:Purpose ;
+    skos:broaderTransitive dpv:PersonnelManagement ;
+    skos:prefLabel "Select staff for the UPSILON Secretariat and the EDPB Secretariat"@en ;
+    skos:editorialNote "For general info on selection and recruitment at the UPSILON: https://upsilon.europa.eu/careers_en"@en .
+
+upsilon:Security a dpv:Purpose ;
+    skos:broaderTransitive dpv:PersonnelManagement ;
+    skos:prefLabel "Site Security"@en ;
+    skos:editorialNote "For general security "@en .
+
+upsilon:OfferEmployment a dpv:Purpose ;
+    skos:broaderTransitive dpv:PersonnelManagement ;
+    skos:prefLabel "Offer Employment"@en ;
+    skos:editorialNote "To make an offer of employment "@en .
+
+upsilon:StaffTraining a dpv:Purpose ;
+    skos:broaderTransitive dpv:PersonnelManagement ;
+    skos:prefLabel "Staff Training Record Keeping"@en ;
+    skos:editorialNote "To manage and record staff  training "@en .
+
+upsilon:PaymentOfExpenses a dpv:Purpose ;
+    skos:broaderTransitive dpv:PersonnelManagement ;
+    skos:prefLabel "Payment of Expenses "@en ;
+    skos:editorialNote "Payment of Expenses incurred by employees "@en .
+
+upsilon:ConductDisciplinaryProcess a dpv:Purpose ;
+    skos:broaderTransitive dpv:PersonnelManagement ;
+    skos:prefLabel "Conduct of Disciplinary Process"@en ;
+    skos:editorialNote "Conduct of Disciplinary Process "@en .
+
+upsilon:ConductRedundancyProcess a dpv:Purpose ;
+    skos:broaderTransitive dpv:PersonnelManagement ;
+    skos:prefLabel "Conduct of Redundancy Process"@en ;
+    skos:editorialNote "conduct of Redundancy Process "@en .
+
+upsilon:FleetManagement a dpv:Purpose ;
+    skos:broaderTransitive dpv:PersonnelManagement ;
+    skos:prefLabel "Fleet Management "@en ;
+    skos:editorialNote "Fleet Management for drivers of company provided vehicles "@en .
+
+upsilon:IllnessAndAbsenceManagement a dpv:Purpose ;
+    skos:broaderTransitive dpv:PersonnelManagement ;
+    skos:prefLabel "Illness and Absence Management"@en ;
+    skos:editorialNote "Illness and Absence Management "@en .
+
+upsilon:ConductBullyingInvestigaion a dpv:Purpose ;
+    skos:broaderTransitive dpv:PersonnelManagement ;
+    skos:prefLabel "Conduct of Bullying investigations"@en ;
+    skos:editorialNote "Conduct of Bullying investigations  "@en .
+
+upsilon:ConductIndustrialRelationsNegotiations a dpv:Purpose ;
+    skos:broaderTransitive dpv:PersonnelManagement ;
+    skos:prefLabel "Conduct Industrial relations negotiations"@en ;
+    skos:editorialNote "Conduct Industrial relations negotiations  "@en .
+
+upsilon:CompensationAndBenefitsAdmin a dpv:Purpose ;
+    skos:broaderTransitive dpv:PersonnelManagement ;
+    skos:prefLabel "Compensation And Benefits Admin"@en ;
+    skos:editorialNote "Compensation And Benefits Admin "@en .
+
+upsilon:SalaryAndBonusReviews  a dpv:Purpose ;
+    skos:broaderTransitive dpv:PersonnelManagement ;
+    skos:prefLabel "Salary And Bonus Reviews"@en ;
+    skos:editorialNote "Salary And Bonus Reviews "@en .
+
+upsilon:EmployeePerformanceManagement a dpv:Purpose ;
+    skos:broaderTransitive dpv:PersonnelManagement ;
+    skos:prefLabel "Employee Performance Management"@en ;
+    skos:editorialNote "Employee Performance Management "@en .
+
+upsilon:EmployeeOnboarding a dpv:Purpose ;
+    skos:broaderTransitive dpv:PersonnelManagement ;
+    skos:prefLabel "Employee Onboarding"@en ;
+    skos:editorialNote "Employee Onboarding "@en .
+
+upsilon:RecruitmentOfStaff a dpv:Purpose ;
+    skos:broaderTransitive dpv:PersonnelManagement ;
+    skos:prefLabel "Recruitment Of Staff"@en ;
+    skos:editorialNote "Recruitment Of Staff "@en .
+
+upsilon:InterviewCandidates a dpv:Purpose ;
+    skos:broaderTransitive dpv:PersonnelManagement ;
+    skos:prefLabel "Interview Candidates"@en ;
+    skos:editorialNote "Interview Candidates "@en .
+
+upsilon:DeskBookingService a dpv:Purpose ;
+    skos:broaderTransitive dpv:PersonnelManagement ;
+    skos:prefLabel "Desk Booking Service"@en ;
+    skos:editorialNote "Desk Booking Service"@en .
+
+upsilon:ManageEmployeeBusinessTravel a dpv:Purpose ;
+    skos:broaderTransitive dpv:PersonnelManagement ;
+    skos:prefLabel "Manage Employee Business Travel"@en ;
+    skos:editorialNote "Manage Employee Business Travel "@en .
+
+upsilon:WhistleblowingServiceForEmployees a dpv:Purpose ;
+    skos:broaderTransitive dpv:PersonnelManagement ;
+    skos:prefLabel "Whistleblowing service for employees"@en ;
+    skos:editorialNote "Whistleblowing service for employees "@en .
+
+upsilon:OnBoardNewEmployees a dpv:Purpose ;
+    skos:broaderTransitive dpv:PersonnelManagement ;
+    skos:prefLabel "On Board New Employees"@en ;
+    skos:editorialNote "On Board New Employees "@en .
+
+upsilon:EmployeeWellnessProgram  a dpv:Purpose ;
+    skos:broaderTransitive dpv:PersonnelManagement ;
+    skos:prefLabel "Employee Wellness Program"@en ;
+    skos:editorialNote "Employee Wellness Program "@en .
+
+upsilon:StaffDiversityAnalysis  a dpv:Purpose ;
+    skos:broaderTransitive dpv:PersonnelManagement ;
+    skos:prefLabel "Staff Diversity Analysis"@en ;
+    skos:editorialNote "Staff Diversity Analysis "@en .
+
+upsilon:MaintainStaffRecords  a dpv:Purpose ;
+    skos:broaderTransitive dpv:PersonnelManagement ;
+    skos:prefLabel "Maintain Staff Records"@en ;
+    skos:editorialNote "Maintain Staff Records "@en .
+
+upsilon:LearningAndDevelopment a dpv:Purpose ;
+    skos:broaderTransitive dpv:PersonnelManagement ;
+    skos:prefLabel "Learning and Development program"@en ;
+    skos:editorialNote "Learning and Development program for employees   to encompass educational training and employee development programs "@en .
+
+upsilon:CustomerManagement a dpv:Purpose ;
+    skos:broaderTransitive dpv:PersonnelManagement ;
+    skos:prefLabel "Customer Management"@en ;
+    skos:editorialNote "Customer Management "@en .
+
+upsilon:FinancialManagement a dpv:Purpose ;
+    skos:broaderTransitive dpv:PersonnelManagement ;
+    skos:prefLabel "Financial Management"@en ;
+    skos:editorialNote "Financial Management "@en .
+
+upsilon:Payroll  a dpv:Purpose ;
+    skos:broaderTransitive dpv:PersonnelManagement ;
+    skos:prefLabel "Payroll Administration"@en ;
+    skos:editorialNote "Payroll Administration "@en .
+
+upsilon:RegulatoryCompliance a dpv:Purpose ;
+    skos:broaderTransitive dpv:PersonnelManagement ;
+    skos:prefLabel "Regulatory Compliance"@en ;
+    skos:editorialNote "Regulatory Compliance with legal obligations "@en .
+
+upsilon:InformationTechnologyServiceProvision a dpv:Purpose ;
+    skos:broaderTransitive dpv:PersonnelManagement ;
+    skos:prefLabel "Information Technology Service Provision "@en ;
+    skos:editorialNote "Information Technology Service Provision "@en .
+
+upsilon:InformationTechnologySecurityProvision  a dpv:Purpose ;
+    skos:broaderTransitive dpv:PersonnelManagement ;
+    skos:prefLabel "Information Technology Security Provision"@en ;
+    skos:editorialNote "Information Technology Security Provision "@en .
+
+
+
+# Legal Basis
+upsilon:StaffRegulation a dpv:LegalBasis ;
+    skos:broaderTransitive dpv:LegalObligation ;
+    skos:prefLabel "The Staff Regulations (and particularly Art. 27-34) and the Conditions of Employment of Other Servants of the EU -the Decision of the UPSILON of 4 November 2020 adopting general implementing provisions relating to the engagement and the use of contract staff."@en .
+
+upsilon:LegitimateInterest a dpv:LegalBasis ;
+    skos:broaderTransitive dpv:LegalObligation ;
+    skos:prefLabel "The processing is necessary for the purposes of the legitimate interests pursued by the controller or by a third party, except where such interests are overridden by the interests or fundamental rights and freedoms of the data subject which require protection of personal data, in particular where the data subject is a child."@en .
+
+
+upsilon:Consent a dpv:LegalBasis ;
+    skos:broaderTransitive dpv:LegalObligation ;
+    skos:prefLabel "Consent of the Data Subject for specified processing."@en .
+
+ upsilon:ContractPerformance a dpv:LegalBasis ;
+    skos:broaderTransitive dpv:LegalObligation ;
+    skos:prefLabel "Fulfilment or performance of a contract involving specified processing."@en .
+
+upsilon:DataTransferLegalBasis a dpv:LegalBasis ;
+    skos:broaderTransitive dpv:LegalObligation ;
+    skos:prefLabel " Specific or special categories and instances of legal basis intended for justifying data transfers."@en .
+
+upsilon:VitalInterestOfDataSubject a dpv:LegalBasis ;
+    skos:broaderTransitive dpv:LegalObligation ;
+    skos:prefLabel "Processing is necessary or required to protect vital interests of a data subject."@en .
+
+upsilon:LegalObligation a dpv:LegalBasis ;
+    skos:broaderTransitive dpv:LegalObligation ;
+    skos:prefLabel "Processing is necessary to comply with a legal obligation."@en .
+
+
+
+# Data Subjects
+
+upsilon:JobApplicants a skos:DataSubject ;
+    skos:prefLabel "Job Applicants at UPSILON"@en ;
+    skos:broaderTransitive dpv:DataSubject .
+
+upsilon:Visitors a skos:DataSubject ;
+    skos:prefLabel "Visitors to facilities"@en ;
+    skos:broaderTransitive dpv:DataSubject .
+
+upsilon:CurrentEmployees a skos:DataSubject ;
+    skos:prefLabel "Current Employees"@en ;
+    skos:broaderTransitive dpv:DataSubject .
+
+upsilon:ExEmployees a skos:DataSubject ;
+    skos:prefLabel "Ex-Employees"@en ;
+    skos:broaderTransitive dpv:DataSubject .
+
+upsilon:JobCandidates a skos:DataSubject ;
+    skos:prefLabel "Job Candidates"@en ;
+    skos:broaderTransitive dpv:DataSubject .
+
+upsilon:Suppliers a skos:DataSubject ;
+    skos:prefLabel "Suppliers"@en ;
+    skos:broaderTransitive dpv:DataSubject .
+
+upsilon:WebsiteVisitors a skos:DataSubject ;
+    skos:prefLabel "Website Visitors"@en ;
+    skos:broaderTransitive dpv:DataSubject .
+
+upsilon:Customers a skos:DataSubject ;
+    skos:prefLabel "Customers"@en ;
+    skos:broaderTransitive dpv:DataSubject .
+
+upsilon:Patients a skos:DataSubject ;
+    skos:prefLabel "Patients"@en ;
+    skos:broaderTransitive dpv:DataSubject .
+
+
+# Personal Data
+upsilon:DataOfStaffCandidates a dpv:PersonalData ;
+    skos:prefLabel "Data of Staff Candidates"@en ;
+    skos:editorialNote """(staff selection): - Data identifying the applicant and contact details (name, first name, gender, nationality, date and place of birth, postal and e-mail address, telephone number, mobile telephone number, fax number). - Data derived from the candidate’s application and CV, his/her motivation letter and other supporting documents submitted, namely current entity of assignment or current employer EUI in case of inter-institutional and for external applicants: institution/company and department, country of residence, as well as function group, grade, step, seniority in the current job, type of post of the person, type of post of the current job, in case of AST officials applying for AD vacancies: information related to certification procedure - Documents requested in the vacancy notice to verify whether the application is admissible or not: a curriculum vitae, a covering letter or motivation letters and other supporting documents submitted by the applicants including information on education, competencies and language skills, diplomas and certificates, professional experience (including names of previous and current employers, duration of employment, level of responsibility), the last two staff evaluation reports and a certificate proving the applicant’s status and grade in case of interinstitutional transfers On their own initiative, applicants may send documents such as letters of recommendation, certificates showing language competences, etc. - Information related to potential conflict of interest is also processed (the Conflict of Interests Form)."""@en ;
+    skos:narrowerTransitive upsilon:JobApplicantCV .
+upsilon:JobApplicantCV a dpv:PersonalData ;
+    skos:narrowerTransitive upsilon:JobApplicantName,
+                            upsilon:JobApplicantGender,
+                            upsilon:JobApplicantBirthDate,
+                            upsilon:JobApplicantBirthPlace,
+                            upsilon:JobApplicantContact,
+                            upsilon:JobApplicantProfessionalExperience,
+                            upsilon:JobApplicantProfessionalExperience,
+                            upsilon:JobApplicantEducationalQualifications ;
+    dpv:hasDataSource upsilon:JobApplicants ;
+    skos:prefLabel "Job Applicant CV"@en .
+upsilon:JobApplicantName a dpv:PersonalData, dpv:DerivedPersonalData ;
+    skos:broaderTransitive dpv-pd:Name ;
+    dpv:hasDataSource upsilon:JobApplicantCV ;
+    skos:prefLabel "Name"@en .
+upsilon:JobApplicantGender a dpv:PersonalData, dpv:DerivedPersonalData ;
+    skos:broaderTransitive dpv-pd:Gender ;
+    dpv:hasDataSource upsilon:JobApplicantCV ;
+    skos:prefLabel "Gender"@en .
+upsilon:JobApplicantBirthDate a dpv:PersonalData, dpv:DerivedPersonalData ;
+    skos:broaderTransitive dpv-pd:BirthDate ;
+    dpv:hasDataSource upsilon:JobApplicantCV ;
+    skos:prefLabel "BirthDate"@en .
+upsilon:JobApplicantBirthPlace a dpv:PersonalData, dpv:DerivedPersonalData ;
+    skos:broaderTransitive dpv-pd:BirthPlace ;
+    dpv:hasDataSource upsilon:JobApplicantCV ;
+    skos:prefLabel "BirthPlace"@en .
+upsilon:JobApplicantContact a dpv:PersonalData, dpv:DerivedPersonalData ;
+    skos:broaderTransitive dpv-pd:Contact ;
+    dpv:hasDataSource upsilon:JobApplicantCV ;
+    skos:prefLabel "Contact"@en .
+upsilon:JobApplicantProfessionalExperience a dpv:PersonalData, dpv:DerivedPersonalData ;
+    skos:broaderTransitive dpv-pd:Job ;
+    dpv:hasDataSource upsilon:JobApplicantCV ;
+    skos:prefLabel "Professional Experience"@en .
+upsilon:JobApplicantProfessionalExperience a dpv:PersonalData, dpv:DerivedPersonalData ;
+    skos:broaderTransitive dpv-pd:Job ;
+    dpv:hasDataSource upsilon:JobApplicantCV ;
+    skos:prefLabel "Professional Experience"@en .
+upsilon:JobApplicantEducationalQualifications a dpv:PersonalData, dpv:DerivedPersonalData ;
+    skos:broaderTransitive dpv-pd:EducationalQualification ;
+    dpv:hasDataSource upsilon:JobApplicantCV ;
+    skos:prefLabel "Educational Qualifications"@en .
+upsilon:JobApplicantDisability a dpv:PersonalData ;
+    skos:broaderTransitive dpv-pd:HealthData ;
+    dpv:hasDataSource upsilon:JobApplicants ;
+    dpv:hasContext dpv:Optional ;
+    skos:prefLabel "Disability"@en .
+upsilon:JobApplicantSpecialHealthNeeds a dpv:PersonalData ;
+    skos:broaderTransitive dpv-pd:HealthData ;
+    dpv:hasDataSource upsilon:JobApplicants ;
+    dpv:hasContext dpv:Optional ;
+    skos:prefLabel "Special Health Needs"@en .
+upsilon:CCTV_Image a dpv:PersonalData ;
+    skos:broaderTransitive dpv-pd:HealthData ;
+    dpv:hasDataSource upsilon:JobApplicants ;
+    dpv:hasContext dpv:Optional ;
+    skos:prefLabel "Special Health Needs"@en .
+upsilon:FinancialData a dpv:PersonalData ;
+    skos:broaderTransitive dpv-pd:HealthData ;
+    dpv:hasDataSource upsilon:DataSubject ;
+    dpv:hasContext dpv:Optional ;
+    skos:prefLabel "Financial Data"@en. 
+upsilon:CreditData a dpv:PersonalData ;
+    skos:broaderTransitive dpv-pd:Credit ;
+    dpv:hasDataSource upsilon:DataSubject ;
+    dpv:hasContext dpv:Optional ;
+    skos:prefLabel "Financial Data"@en. 
+upsilon:Authenticating a dpv:PersonalData ;
+    skos:broaderTransitive dpv-pd:Authenticating ;
+    dpv:hasDataSource upsilon:DataSubject ;
+    dpv:hasContext dpv:Optional ;
+    skos:prefLabel "Authenticating Data"@en. 
+upsilon:Behavioral  a dpv:PersonalData ;
+    skos:broaderTransitive dpv-pd:Behavioral  ;
+    dpv:hasDataSource upsilon:DataSubject ;
+    dpv:hasContext dpv:Optional ;
+    skos:prefLabel "Behavioral Data"@en. 
+upsilon:Communication a dpv:PersonalData ;
+    skos:broaderTransitive dpv-pd:Communication ;
+    dpv:hasDataSource upsilon:DataSubject ;
+    dpv:hasContext dpv:Optional ;
+    skos:prefLabel "Communication Data "@en. 
+upsilon:Contact  a dpv:PersonalData ;
+    skos:broaderTransitive dpv-pd:Contact  ;
+    dpv:hasDataSource upsilon:DataSubject ;
+    dpv:hasContext dpv:Optional ;
+    skos:prefLabel "Contact Data"@en. 
+upsilon:Credit a dpv:PersonalData ;
+    skos:broaderTransitive dpv-pd:Credit ;
+    dpv:hasDataSource upsilon:DataSubject ;
+    dpv:hasContext dpv:Optional ;
+    skos:prefLabel "Credit Data"@en. 
+upsilon:Demographic  a dpv:PersonalData ;
+    skos:broaderTransitive dpv-pd:Demographic ;
+    dpv:hasDataSource upsilon:DataSubject ;
+    dpv:hasContext dpv:Optional ;
+    skos:prefLabel "Demographic Data"@en. 
+upsilon:DeviceBased  a dpv:PersonalData ;
+    skos:broaderTransitive dpv-pd:DeviceBased  ;
+    dpv:hasDataSource upsilon:DataSubject ;
+    dpv:hasContext dpv:Optional ;
+    skos:prefLabel "Device Based Data "@en. 
+upsilon:Family  a dpv:PersonalData ;
+    skos:broaderTransitive dpv-pd:Family ;
+    dpv:hasDataSource upsilon:DataSubject ;
+    dpv:hasContext dpv:Optional ;
+    skos:prefLabel "Family Data"@en. 
+upsilon:FinancialAccount  a dpv:PersonalData ;
+    skos:broaderTransitive dpv-pd:FinancialAccount ;
+    dpv:hasDataSource upsilon:DataSubject ;
+    dpv:hasContext dpv:Optional ;
+    skos:prefLabel "Financial Account Data"@en. 
+upsilon:Identifying a dpv:PersonalData ;
+    skos:broaderTransitive dpv-pd:Identifying ;
+    dpv:hasDataSource upsilon:DataSubject ;
+    dpv:hasContext dpv:Optional ;
+    skos:prefLabel "Identifying Data"@en. 
+upsilon:KnowledgeBelief  a dpv:PersonalData ;
+    skos:broaderTransitive dpv-pd:KnowledgeBelief ;
+    dpv:hasDataSource upsilon:DataSubject ;
+    dpv:hasContext dpv:Optional ;
+    skos:prefLabel "Knowledge Belief Data"@en. 
+upsilon:LifeHistory a dpv:PersonalData ;
+    skos:broaderTransitive dpv-pd:LifeHistory ;
+    dpv:hasDataSource upsilon:DataSubject ;
+    dpv:hasContext dpv:Optional ;
+    skos:prefLabel "Life History Data"@en. 
+upsilon:Location a dpv:PersonalData ;
+    skos:broaderTransitive dpv-pd:Location ;
+    dpv:hasDataSource upsilon:DataSubject ;
+    dpv:hasContext dpv:Optional ;
+    skos:prefLabel "Location Data"@en. 
+upsilon:MedicalHealth a dpv:PersonalData ;
+    skos:broaderTransitive dpv-pd:MedicalHealth ;
+    dpv:hasDataSource upsilon:DataSubject ;
+    dpv:hasContext dpv:Optional ;
+    skos:prefLabel "Medical Health Data"@en. 
+upsilon:Preference  a dpv:PersonalData ;
+    skos:broaderTransitive dpv-pd:Preference ;
+    dpv:hasDataSource upsilon:DataSubject ;
+    dpv:hasContext dpv:Optional ;
+    skos:prefLabel "Preference Data"@en. 
+upsilon:Professional a dpv:PersonalData ;
+    skos:broaderTransitive dpv-pd:Professional ;
+    dpv:hasDataSource upsilon:DataSubject ;
+    dpv:hasContext dpv:Optional ;
+    skos:prefLabel "Professional Data"@en. 
+upsilon:SocialNetwork a dpv:PersonalData ;
+    skos:broaderTransitive dpv-pd:SocialNetwork ;
+    dpv:hasDataSource upsilon:DataSubject ;
+    dpv:hasContext dpv:Optional ;
+    skos:prefLabel "Social Network Data"@en. 
+upsilon:Transactional  a dpv:PersonalData ;
+    skos:broaderTransitive dpv-pd:Transactional ;
+    dpv:hasDataSource upsilon:DataSubject ;
+    dpv:hasContext dpv:Optional ;
+    skos:prefLabel "Transactional Data"@en. 
+
+
+
+# Tech/Org Measures
+
+upsilon:RestrictedMailboxForSelectionCommittee a dpv:TechnicalMeasure ;
+    skos:broaderTransitive dpv:AccessControlMethod ;
+    skos:prefLabel "Restricted Mailbox for Selection Committee"@en ;
+    skos:editorialNote """Electronic file: applications from candidate are kept in the functional mailbox, which has restricted access to the HR colleagues in charge of selection and the Head of the HRBA unit."""@en .
+
+upsilon:LockedPaperCabinet a dpv:TechnicalMeasure, dpv:OrganisationalMeasure ;
+    skos:broaderTransitive dpv:AccessControlMethod, dpv:AuthorisationProcedure ;
+    skos:prefLabel "Locked Paper Cabinet with need-to-know access"@en ;
+    skos:editorialNote """Paper file : are stored in a cupboard in a locked office to which only a restricted of HR colleagues have access on a need-to-know basis."""@en .
+
+upsilon:DataProtectionNoticeStaffSelection a dpv:OrganisationalMeasure ;
+    skos:broaderTransitive dpv:PrivacyNotice ;
+    dpv:hasLocation <https://upsilon.europa.eu/data-protection/our-work/publications/data-protection-notices/01-upsilon-data-protection-notice-staff_en> ;
+    skos:prefLabel "Data Protection Notice for Staff Selection"@en .
+
+upsilon:BusinessContinuityPlan a dpv:TechnicalMeasure ;
+    skos:broaderTransitive dpv:AccessControlMethod ;
+    skos:prefLabel "Business Continuity Plan"@en ;
+    skos:editorialNote """Electronic file: applications from candidate are kept in the functional mailbox, which has restricted access to the HR colleagues in charge of selection and the Head of the HRBA unit."""@en .
+
+upsilon:MultiFactorAuthentication a dpv:TechnicalMeasure ;
+    skos:broaderTransitive dpv:AccessControlMethod, dpv:AuthorisationProcedure ;
+    skos:prefLabel "Multi Factor Authentication"@en ;
+    skos:editorialNote """An authentication system that uses two or more methods to authenticate."""@en .
+
+upsilon:EncryptionInRest a dpv:TechnicalMeasure ;
+    skos:broaderTransitive dpv:Encryption ;
+    skos:prefLabel "Encryption In Rest"@en ;
+    skos:editorialNote """Encryption of data when being stored ."""@en .
+
+upsilon:Anonymisation a dpv:TechnicalMeasure ;
+    skos:broaderTransitive dpv:Anonymisation ;
+    skos:prefLabel "Anonymisation"@en ;
+    skos:editorialNote """Altering personal data irreversibly such that a data subject can no longer be identified directly or indirectly, either by the data controller alone or in collaboration with any other party."""@en .
+
+upsilon:IntrusionDetectionSystem a dpv:TechnicalMeasure ;
+    skos:broaderTransitive dpv:IntrusionDetectionSystem ;
+    skos:prefLabel "Intrusion Detection System"@en ;
+    skos:editorialNote """Use of measures to detect intrusions and other unauthorised attempts to gain access to a system."""@en .
+
+upsilon:Pseudonymisation a dpv:TechnicalMeasure ;
+    skos:broaderTransitive dpv:Pseudonymisation ;
+    skos:prefLabel "Pseudonymisation"@en ;
+    skos:editorialNote """Pseudonymisation means the processing of personal data in such a manner that the personal data can no longer be attributed to a specific data subject without the use of additional information, provided that such additional information is kept separately and is subject to technical and organisational measures to ensure that the personal data are not attributed to an identified or identifiable natural person;."""@en .
+
+upsilon:UsageControl a dpv:TechnicalMeasure ;
+    skos:broaderTransitive dpv:UsageControl ;
+    skos:prefLabel "Usage Control"@en ;
+    skos:editorialNote """Management of usage, which is intended to be broader than access control and may cover trust, digital rights, or other relevant controls."""@en .
+
+upsilon:FileSystemSecurity a dpv:TechnicalMeasure ;
+    skos:broaderTransitive dpv:FileSystemSecurity ;
+    skos:prefLabel "File System Security"@en ;
+    skos:editorialNote """Security implemented over a file system."""@en .
+
+upsilon:EncryptionInTransfer a dpv:TechnicalMeasure ;
+    skos:broaderTransitive dpv:EncryptionInTransfer ;
+    skos:prefLabel "Encryption In Transfer"@en ;
+    skos:editorialNote """Encryption of data when being transferred ."""@en .
+
+upsilon:InformationFlowControl a dpv:TechnicalMeasure ;
+    skos:broaderTransitive dpv:InformationFlowControl ;
+    skos:prefLabel "Information Flow Control"@en ;
+    skos:editorialNote """Use of measures to control information flows ."""@en .
+
+
+
+
+
+
+
+
+#Countries
+
+upsilon:UnitedKingdom a foaf:Agent, dpv:Country ;
+    dpv:hasName "United Kingdom"@en ;
+    skos:broaderTransitive upsilon:UnitedKingdom .
+
+upsilon:UnitedStatesofAmerica a foaf:Agent, dpv:Country ;
+    dpv:hasName "United States of America"@en ;
+    skos:broaderTransitive upsilon:UnitedStatesofAmerica .
+
+
+#SafeguardForDataTransfer
+
+upsilon:Adequacy a dpv:SafeguardForDataTransfer ;
+	dpv:hasName "Art 45(3) adequacy decision"@en ;
+    	skos:broaderTransitive upsilon:Adequacy .
+
+upsilon:StandardContractualClauses a dpv:SafeguardForDataTransfer ;
+	dpv:hasName "Art 46(2-c) Standard Contractual Clauses (SCC) by EC"@en ;
+    	skos:broaderTransitive upsilon:StandardContractualClauses .
+
+
+
+
+# Rights
+upsilon:DataSubjectRights a dpv:DataSubjectRight ;
+    skos:broaderTransitive dpv-gdpr:A15, dpv-gdpr:A16, dpv-gdpr:A20, dpv-gdpr:A21 ;
+    skos:prefLabel "Information on exercising rights"@en ;
+    skos:editorialNote """For more information, including how to exercise your rights to access, rectification, object and data portability (where applicable), see the data protection notice: https://upsilon.europa.eu/data-protection/our-work/publications/data-protection-notices/01-upsilon-data-protection-notice-staff_en"""@en ;
+    dpv:hasLocation <https://upsilon.europa.eu/data-protection/our-work/publications/data-protection-notices/01-upsilon-data-protection-notice-staff_en> .
