@@ -1,1 +1,576 @@
+#Ontorefine schema for conversion of CSV files to RDF in json format
 
+{
+  "baseIRI": "http://example.com/base/",
+  "namespaces": {
+    "dct": "http://purl.org/dc/terms/",
+    "dpv": "https://w3id.org/dpv/dpv-skos#",
+    "dpv-gdpr": "https://w3id.org/dpv/dpv-skos/dpv-gdpr#",
+    "dpv-pd": "https://w3id.org/dpv/dpv-skos/dpv-pd#",
+    "dpv-tech": "https://w3id.org/dpv/dpv-skos/dpv-tech#",
+    "dpcat": "https://w3id.org/dpcat#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "time": "https://www.w3.org/TR/owl-time/",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "vcard": "http://www.w3.org/2006/vcard/ns#",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "terms": "http://purl.org/dc/terms/",
+    "upsilon": "https://w3id.org/dpcat/examples/UPSILON/vocab#"
+  },
+  "subjectMappings": [
+    {
+      "propertyMappings": [
+        {
+          "property": {
+            "transformation": {
+              "expression": "dpv",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "hasDataController"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "upsilon",
+                "language": "prefix"
+              },
+              "valueSource": {
+                "columnName": "Controller",
+                "source": "column"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "dpv",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "hasResponsibleEntity"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "upsilon",
+                "language": "prefix"
+              },
+              "valueSource": {
+                "columnName": "Responsible Entity",
+                "source": "column"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "dpv",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "hasPersonalData"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "upsilon",
+                "language": "prefix"
+              },
+              "valueSource": {
+                "columnName": "DataCategory",
+                "source": "column"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "dpv",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "hasPurpose"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "upsilon",
+                "language": "prefix"
+              },
+              "valueSource": {
+                "columnName": "Purpose of processing",
+                "source": "column"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "dpv",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "hasSpecialCategoryData"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "upsilon",
+                "language": "prefix"
+              },
+              "valueSource": {
+                "columnName": "SpecialCategory Data",
+                "source": "column"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "dpv",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "hasLegalBasis"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "upsilon",
+                "language": "prefix"
+              },
+              "valueSource": {
+                "columnName": "Legal basis",
+                "source": "column"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "dpv",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "hasRecipient"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "upsilon",
+                "language": "prefix"
+              },
+              "valueSource": {
+                "columnName": "Recipients",
+                "source": "column"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "dpv",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "hasSafeguardForDataTransfer"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "upsilon",
+                "language": "prefix"
+              },
+              "valueSource": {
+                "columnName": "Safeguards for Third Country Transfers",
+                "source": "column"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "dpv",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "hasRight"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "upsilon",
+                "language": "prefix"
+              },
+              "valueSource": {
+                "columnName": "Data Subject Rights",
+                "source": "column"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "dpv",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "hasCountry"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "upsilon",
+                "language": "prefix"
+              },
+              "valueSource": {
+                "columnName": "Names of third countries that personal data are transferred to (if applicable)",
+                "source": "column"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "dpv",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "hasDataSubject"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "upsilon",
+                "language": "prefix"
+              },
+              "valueSource": {
+                "columnName": "DataSubjectCategory",
+                "source": "column"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "dct",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "publisher"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "dct",
+                "language": "prefix"
+              },
+              "valueSource": {
+                "columnName": "Publisher",
+                "source": "column"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "dpv",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "hasResponsibleEntity"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "upsilon",
+                "language": "prefix"
+              },
+              "valueSource": {
+                "columnName": "Responsible Entity",
+                "source": "column"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "dpv",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "hasTechnicalOrganisationalMeasure"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "upsilon",
+                "language": "prefix"
+              },
+              "valueSource": {
+                "columnName": "Tech org measures",
+                "source": "column"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "dcat",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "contactPoint"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "upsilon",
+                "language": "prefix"
+              },
+              "valueSource": {
+                "columnName": "Contact Point",
+                "source": "column"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "dct",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "created"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "Created date",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "date"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "dct",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "title"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "Title of Process",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "language_literal",
+                "language": {
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "en"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "dpv",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "hasOrganisationalUnit"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "upsilon",
+                "language": "prefix"
+              },
+              "valueSource": {
+                "columnName": "Org Unit",
+                "source": "column"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        }
+      ],
+      "subject": {
+        "transformation": {
+          "expression": "upsilon",
+          "language": "prefix"
+        },
+        "valueSource": {
+          "columnName": "Ref. No.",
+          "source": "column"
+        }
+      },
+      "typeMappings": [
+        {
+          "transformation": {
+            "expression": "dpcat",
+            "language": "prefix"
+          },
+          "valueSource": {
+            "source": "constant",
+            "constant": "ROPARecord"
+          }
+        }
+      ]
+    }
+  ]
+}
