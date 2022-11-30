@@ -8,10 +8,11 @@ PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX terms: <http://purl.org/dc/terms/>
 
-Select ?RopaRecord ?date ?description ?title  
+Select Distinct ?RopaRecord ?date ?description ?title  
 
    
-{ ?RopaRecord terms:created ?date.
+{ ?RopaRecord a dpcat:ROPARecord.
+        ?RopaRecord terms:created ?date.
    ?RopaRecord terms:description ?description.
        ?RopaRecord terms:title ?title.
     
