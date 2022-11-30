@@ -1,0 +1,17 @@
+#Generate report for International Transfers
+
+PREFIX dpcat: <https://w3id.org/dpcat#>
+PREFIX upsilon: <https://w3id.org/dpcat/examples/UPSILON/vocab#>
+PREFIX dpv: <https://w3id.org/dpv/dpv-skos#>
+Prefix dct: <http://purl.org/dc/terms/>
+
+Select Distinct ?RopaRecord ?Country ?Recipient
+
+Where { 
+	?RopaRecord dpv:hasRecipient ?Recipient.
+    ?RopaRecord dpv:hasPersonalData ?Contact.
+    ?RopaRecord dpv:hasCountry ?Country.
+    ?Recipient a dpv:Recipient.
+    
+    
+} limit 100 
