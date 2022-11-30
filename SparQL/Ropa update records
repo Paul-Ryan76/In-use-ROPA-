@@ -1,0 +1,24 @@
+#Ropa record updates 
+PREFIX dpcat: <https://w3id.org/dpcat#>
+PREFIX upsilon: <https://w3id.org/dpcat/examples/UPSILON/vocab#>
+PREFIX dpv: <https://w3id.org/dpv/dpv-skos#>
+Prefix dct: <http://purl.org/dc/terms/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX terms: <http://purl.org/dc/terms/>
+
+Select ?RopaRecord ?date ?description ?title  
+
+   
+{ ?RopaRecord terms:created ?date.
+   ?RopaRecord terms:description ?description.
+       ?RopaRecord terms:title ?title.
+    
+   
+   	
+ 
+}
+   
+    
+ limit 100 
