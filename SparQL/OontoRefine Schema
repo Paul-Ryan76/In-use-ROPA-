@@ -1,0 +1,72 @@
+#This is the OntoRefine Schema used for uplifting CSV data
+
+BASE <http://example.com/base/>
+PREFIX mapper: <http://www.ontotext.com/mapper/>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX dpv: <https://w3id.org/dpv/dpv-skos#>
+PREFIX dpv-gdpr: <https://w3id.org/dpv/dpv-skos/dpv-gdpr#>
+PREFIX dpv-pd: <https://w3id.org/dpv/dpv-skos/dpv-pd#>
+PREFIX dpv-tech: <https://w3id.org/dpv/dpv-skos/dpv-tech#>
+PREFIX dpcat: <https://w3id.org/dpcat#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX time: <https://www.w3.org/TR/owl-time/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX terms: <http://purl.org/dc/terms/>
+PREFIX upsilon: <https://w3id.org/dpcat/examples/UPSILON/vocab#>
+
+CONSTRUCT {
+    ?s1 a dpcat:ROPARecord ;
+        dpv:hasDataController ?o_hasDataController ;
+        dpv:hasResponsibleEntity ?o_hasResponsibleEntity ;
+        dpv:hasPersonalData ?o_hasPersonalData ;
+        dpv:hasPurpose ?o_hasPurpose ;
+        dpv:hasSpecialCategoryData ?o_hasSpecialCategoryData ;
+        dpv:hasLegalBasis ?o_hasLegalBasis ;
+        dpv:hasRecipient ?o_hasRecipient ;
+        dpv:hasSafeguardForDataTransfer ?o_hasSafeguardForDataTransfer ;
+        dpv:hasRight ?o_hasRight ;
+        dpv:hasCountry ?o_hasCountry ;
+        dpv:hasDataSubject ?o_hasDataSubject ;
+        dct:publisher ?o_publisher ;
+        dpv:hasResponsibleEntity ?o_hasResponsibleEntity_2 ;
+        dpv:hasTechnicalOrganisationalMeasure ?o_hasTechnicalOrganisationalMeasure ;
+        dcat:contactPoint ?o_contactPoint ;
+        dct:created ?o_created ;
+        dct:title ?o_title ;
+        dpv:hasOrganisationalUnit ?o_hasOrganisationalUnit .
+} WHERE {
+    SERVICE <rdf-mapper:ontorefine:1828793681644> {
+        # Columns as variables:
+        #   ?c_Ref__No_, ?c_Title_of_Process, ?c_Description_of_Process, ?c_Created_date,
+        #   ?c_Publisher, ?c_Contact_Point, ?c_Controller, ?c_Responsible_Entity,
+        #   ?c_Org_Unit, ?c_DataCategory, ?c_SpecialCategory_Data, ?c_Purpose_of_processing,
+        #   ?c_Legal_basis, ?c_DataSubjectCategory, ?c_Data_Subject_Rights, ?c_Recipients,
+        #   ?c_Retention_Period, ?c_Names_of_third_countries_that_personal_data_are_transferred_to__if_applicable_,
+        #   ?c_Safeguards_for_Third_Country_Transfers, ?c_Tech_org_measures, ?c_Storage
+        # Metadata as variables:
+        #   ?row_index, ?record_id
+        BIND(IRI(mapper:encode_iri(upsilon:, ?c_Ref__No_)) as ?s1)
+        BIND(IRI(mapper:encode_iri(upsilon:, ?c_Controller)) as ?o_hasDataController)
+        BIND(IRI(mapper:encode_iri(upsilon:, ?c_Responsible_Entity)) as ?o_hasResponsibleEntity)
+        BIND(IRI(mapper:encode_iri(upsilon:, ?c_DataCategory)) as ?o_hasPersonalData)
+        BIND(IRI(mapper:encode_iri(upsilon:, ?c_Purpose_of_processing)) as ?o_hasPurpose)
+        BIND(IRI(mapper:encode_iri(upsilon:, ?c_SpecialCategory_Data)) as ?o_hasSpecialCategoryData)
+        BIND(IRI(mapper:encode_iri(upsilon:, ?c_Legal_basis)) as ?o_hasLegalBasis)
+        BIND(IRI(mapper:encode_iri(upsilon:, ?c_Recipients)) as ?o_hasRecipient)
+        BIND(IRI(mapper:encode_iri(upsilon:, ?c_Safeguards_for_Third_Country_Transfers)) as ?o_hasSafeguardForDataTransfer)
+        BIND(IRI(mapper:encode_iri(upsilon:, ?c_Data_Subject_Rights)) as ?o_hasRight)
+        BIND(IRI(mapper:encode_iri(upsilon:, ?c_Names_of_third_countries_that_personal_data_are_transferred_to__if_applicable_)) as ?o_hasCountry)
+        BIND(IRI(mapper:encode_iri(upsilon:, ?c_DataSubjectCategory)) as ?o_hasDataSubject)
+        BIND(IRI(mapper:encode_iri(dct:, ?c_Publisher)) as ?o_publisher)
+        BIND(IRI(mapper:encode_iri(upsilon:, ?c_Responsible_Entity)) as ?o_hasResponsibleEntity_2)
+        BIND(IRI(mapper:encode_iri(upsilon:, ?c_Tech_org_measures)) as ?o_hasTechnicalOrganisationalMeasure)
+        BIND(IRI(mapper:encode_iri(upsilon:, ?c_Contact_Point)) as ?o_contactPoint)
+        BIND(STRDT(?c_Created_date, xsd:date) as ?o_created)
+        BIND(STRLANG(?c_Title_of_Process, "en") as ?o_title)
+        BIND(IRI(mapper:encode_iri(upsilon:, ?c_Org_Unit)) as ?o_hasOrganisationalUnit)
+    }
+}
